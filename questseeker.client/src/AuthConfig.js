@@ -1,3 +1,3 @@
-export const domain = ''
-export const clientId = ''
-export const audience = ''
+export const domain = 'dev-7ik1xagu.us.auth0.com'
+export const clientId = 'nMxRenMkAMif27PnGRTXLBNWihL1PPaW'
+export const audience = 'https://questseeker'
