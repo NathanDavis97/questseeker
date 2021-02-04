@@ -88,7 +88,7 @@
                            placeholder="Quest Code"
                     >
                   </div>
-                  <button type="button" class="btn btn-primary">
+                  <button type="submit" class="btn btn-primary">
                     +
                   </button>
                 </form>
@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { onMounted, reactive } from 'vue'
 import { logger } from '../utils/Logger'
 import { questService } from '../services/QuestService'
 import $ from 'jquery'
@@ -114,6 +114,13 @@ export default {
     const state = reactive({
       newQuest: {},
       codeInput: {}
+    })
+    onMounted(async() => {
+      try {
+        await questService.getQuests()
+      } catch (error) {
+        logger.error(error)
+      }
     })
     return {
       state,
@@ -128,6 +135,7 @@ export default {
       async joinQuest() {
         try {
           await questService.joinQuest(state.codeInput)
+          $('#JoinQuestModal').modal('hide')
         } catch (error) {
           logger.error(error)
         }
