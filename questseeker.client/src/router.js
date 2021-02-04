@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { authGuard } from '@bcwdev/auth0provider-client'
 
-const questId = 'quests/:questid'
+const questId = '/quests/:questid'
 function loadPage(page) {
   return () => import(`./pages/${page}.vue`)
 }
