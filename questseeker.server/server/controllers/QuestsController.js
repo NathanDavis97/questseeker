@@ -4,7 +4,7 @@ import { questsService } from '../services/QuestsService.js'
 import { objectivesService } from '../services/ObjectivesService.js'
 import { userQuestsService } from '../services/UserQuestsService'
 
-export class QuestController extends BaseController {
+export class QuestsController extends BaseController {
   constructor() {
     super('api/quests')
     this.router

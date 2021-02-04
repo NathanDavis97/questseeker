@@ -2,9 +2,9 @@ import { Auth0Provider } from '@bcwdev/auth0provider'
 import BaseController from '../utils/BaseController'
 import { answersService } from '../services/AnswersService.js'
 
-export class ObjectivesController extends BaseController {
+export class AnswersController extends BaseController {
   constructor() {
-    super('api/objectives')
+    super('api/answers')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
