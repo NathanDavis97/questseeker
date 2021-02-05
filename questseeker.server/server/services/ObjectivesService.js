@@ -22,5 +22,13 @@ class ObjectivesService {
   async update(update, req) {
     return await dbContext.Objectives.findOneAndUpdate({ _id: update.id, creatorId: req.userInfo.id }, update, { new: true }).populate('creator')
   }
+
+  async delete(req) {
+    const objectives = await dbContext.Objectives.findOneAndDelete({ _id: req.params.id, creatorId: req.userInfo.id })
+    if (!objectives) {
+      throw new BadRequest('You are not the owner, or this is not a valid objective')
+    }
+    return 'delorted'
+  }
 }
 export const objectivesService = new ObjectivesService()

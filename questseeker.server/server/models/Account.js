@@ -9,7 +9,7 @@ const Account = new Schema(
     name: { type: String, required: true },
     picture: { type: String },
     // NOTE If you wish to add additional public properties for Accounts do so here
-    activeQuest: { type: String, required: true, default: '' }
+    activeQuest: { type: String, default: '' }
   },
   { timestamps: true, _id: false, toJSON: { virtuals: true } }
 )

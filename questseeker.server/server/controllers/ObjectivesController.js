@@ -13,6 +13,7 @@ export class ObjectivesController extends BaseController {
       .get('/:id/answers', this.getAllAnswers)
       .put('/:id', this.edit)
       .post('', this.create)
+      .delete('/:id', this.delete)
   }
 
   async getAll(req, res, next) {
@@ -61,6 +62,15 @@ export class ObjectivesController extends BaseController {
       req.body.creatorId = req.userInfo.id
       const data = await objectivesService.update(req.body, req)
       res.send(data)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async delete(req, res, next) {
+    try {
+      await objectivesService.delete(req)
+      res.send('delorted')
     } catch (error) {
       next(error)
     }
