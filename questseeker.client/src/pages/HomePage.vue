@@ -20,7 +20,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">
-                  Title the Quest
+                  Forge a Quest
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -36,11 +36,11 @@
                            id=""
                            v-model="state.newQuest.title"
                            aria-describedby="helpId"
-                           placeholder=""
+                           placeholder="Quest Title"
                     >
                   </div>
                   <button type="submit" class="btn btn-primary">
-                    Title it!
+                    Forge!
                   </button>
                 </form>
               </div>
@@ -89,7 +89,7 @@
                     >
                   </div>
                   <button type="submit" class="btn btn-primary">
-                    +
+                    Join!
                   </button>
                 </form>
               </div>
