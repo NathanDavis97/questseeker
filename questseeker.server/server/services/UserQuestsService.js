@@ -1,13 +1,13 @@
 import { dbContext } from '../db/DbContext'
 
 class UserQuestsService {
-  async getQuestsByUserId(accountId) {
-    const results = await dbContext.UserQuests.find({ userId: accountId }).populate('quest')
+  async getQuestsByUserId(id) {
+    const results = await dbContext.UserQuests.find({ accountId: id }).populate('quest')
     return results
   }
 
   async getUserByQuestId(query) {
-    const results = await dbContext.UserQuests.find(query).populate('quest')
+    const results = await dbContext.UserQuests.find(query).populate('account')
     return results
   }
 
