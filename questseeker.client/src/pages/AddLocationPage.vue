@@ -1,5 +1,6 @@
 <template>
   <div class="AddLocationPage">
+    <p>This is the add location page</p>
   </div>
 </template>
 

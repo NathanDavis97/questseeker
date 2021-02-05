@@ -104,8 +104,9 @@
 </template>
 
 <script>
-import { onMounted, reactive } from 'vue'
+import { reactive, onMounted } from 'vue'
 import { logger } from '../utils/Logger'
+import router from '../router'
 import { questService } from '../services/QuestService'
 import $ from 'jquery'
 export default {
@@ -126,8 +127,9 @@ export default {
       state,
       async createQuest() {
         try {
-          await questService.createQuest(state.newQuest)
+          const _id = await questService.createQuest(state.newQuest)
           $('#CreateTitleModal').modal('hide')
+          router.push({ name: 'AddLocationPage', params: { questid: _id } })
         } catch (error) {
           logger.error(error)
         }

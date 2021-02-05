@@ -1,6 +1,7 @@
 import { AppState } from '../AppState'
 import router from '../router'
 import { codeGenerator } from '../utils/CodeGenerator'
+import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
 
 class QuestService {
@@ -12,9 +13,11 @@ class QuestService {
   async createQuest(newQuest) {
     newQuest.accessCode = codeGenerator(5)
     const res = await api.post('api/quests/', newQuest)
+    this.getQuests()
     AppState.quests.push(res.data)
     AppState.activeQuest = res.data
-    router.push({ name: 'AddLocationPage', params: { questId: res.data.id } })
+    logger.log(res.data)
+    return res.data.id
   }
 
   async joinQuest(inputCode) {
