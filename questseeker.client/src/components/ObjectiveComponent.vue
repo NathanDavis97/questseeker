@@ -1,6 +1,6 @@
 <template>
   <div class="ObjectiveComponent">
-    <p>THis is a button button</p>
+    <p>This is a button button</p>
   </div>
 </template>
 

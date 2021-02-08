@@ -4,8 +4,8 @@ const Schema = mongoose.Schema
 const Objective = new Schema(
   {
     location: {
-      latitude: { type: Number, required: true },
-      longitude: { type: Number, required: true }
+      lat: { type: Number, required: true },
+      lng: { type: Number, required: true }
     },
     questId: { type: String, required: true },
     body: { type: String, required: true },
