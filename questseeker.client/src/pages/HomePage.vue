@@ -140,6 +140,7 @@ export default {
       },
       async joinQuest() {
         try {
+          debugger
           await questService.joinQuest(state.codeInput)
           $('#JoinQuestModal').modal('hide')
         } catch (error) {
