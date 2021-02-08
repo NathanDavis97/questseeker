@@ -33,7 +33,7 @@
                   <input type="text" class="form-control my-4" placeholder="Objective Title">
                   <input type="text" class="form-control my-4" placeholder="Objective Description">
                   <!-- TODO change what the input type is so that there is a min and max Range -->
-                  <input type="text" class="form-control my-4" placeholder="Range">
+                  <input type="text" class="form-control my-1" placeholder="Range">
                   <button type="button" class="btn btn-primary">
                     Create Objective
                   </button>
@@ -46,8 +46,15 @@
         </form>
       </div>
     </div>
-    <div class="MapSeciton mapSection row mx-3" id="AddLocationMap">
+    <div class="MapSection mapSection row mx-3" id="AddLocationMap">
       <div class="col">
+        <HostMap :disable-u-i="false"
+                 :zoom="15"
+                 map-type="roadmap"
+                 :center="{ lat: 43.6150, lng: -116.2023 }"
+                 :markers="markers"
+        >
+        </HostMap>
       </div>
     </div>
     <div class="row">
@@ -67,7 +74,12 @@
 export default {
   name: 'AddLocationPage',
   setup() {
-    return {}
+    const markers = [
+      { lat: 43.6150, lng: -116.2023, title: 'Egyptian Theatre' },
+      { lat: 43.7150, lng: -116.20 },
+      { lat: 43.6130, lng: -117.2023 }
+    ]
+    return { markers }
   },
   components: {}
 }
@@ -75,6 +87,6 @@ export default {
 
 <style lang="scss" scoped>
 .mapSection{
-  min-height: 50vh;
+  min-height: 40vh;
 }
 </style>
