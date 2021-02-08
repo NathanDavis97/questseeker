@@ -22,6 +22,7 @@ class QuestService {
 
   async joinQuest(inputCode) {
     // filter
+    this.getQuests()
     const matchingAccessCode = AppState.quests.filter(quest => quest.accessCode === inputCode.accessCode)
     const relationshipInfo = { questId: matchingAccessCode[0].id }
 

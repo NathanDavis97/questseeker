@@ -118,11 +118,12 @@ export default {
       codeInput: {}
     })
     onMounted(async() => {
-      try {
-        await questService.getQuests()
-      } catch (error) {
-        logger.error(error)
-      }
+      // REVIEW do we need to get the quests on page load? Or do we just put that request in with the join quest.
+      // try {
+      //   await questService.getQuests()
+      // } catch (error) {
+      //   logger.error(error)
+      // }
     })
     return {
       state,
