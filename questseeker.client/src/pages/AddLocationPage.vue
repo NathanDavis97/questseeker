@@ -52,9 +52,12 @@
     </div>
     <div class="row">
       <div class="col d-flex justify-content-end my-5">
+        <!-- FIXME remove router links here Just for basic navigation for now-->
+        <!-- <router-link :to="{ name: 'ObjectiveReviewPage', params: {questId: route.params.id}}"> -->
         <button class="btn btn-primary">
           Use Current Location
         </button>
+        <!-- </router-link> -->
       </div>
     </div>
   </div>

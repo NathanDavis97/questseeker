@@ -1,11 +1,12 @@
 <template>
-  <div class="ObjectiveLocationComponent">
+  <div class="ObjectiveComponent">
+    <p>THis is a button button</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ObjectiveLocationComponent',
+  name: 'ObjectiveComponent',
   setup() {
     return {}
   },

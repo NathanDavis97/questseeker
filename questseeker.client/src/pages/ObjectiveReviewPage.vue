@@ -1,5 +1,10 @@
 <template>
-  <div class="LocationReviewPage">
+  <div class="LocationReviewPage container-fluid">
+    <div class="row">
+      <div class="col">
+        <ObjectiveComponent />
+      </div>
+    </div>
   </div>
 </template>
 
