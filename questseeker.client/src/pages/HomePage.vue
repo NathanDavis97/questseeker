@@ -104,11 +104,12 @@
 </template>
 
 <script>
+import { questService } from '../services/QuestService'
 import { reactive, onMounted } from 'vue'
 import { logger } from '../utils/Logger'
 import router from '../router'
-import { questService } from '../services/QuestService'
 import $ from 'jquery'
+
 export default {
   name: 'Home',
   setup() {

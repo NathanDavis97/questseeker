@@ -1,5 +1,5 @@
 <template>
-  <div class="LocationReviewPage container-fluid">
+  <div class="ObjectiveReviewPage container-fluid">
     <div class="row">
       <div class="col">
         <ObjectiveComponent />
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'LocationReviewPage',
+  name: 'ObjectiveReviewPage',
   setup() {
     return {}
   },
