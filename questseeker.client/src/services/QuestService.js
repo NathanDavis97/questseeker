@@ -7,7 +7,7 @@ import { api } from './AxiosService'
 class QuestService {
   async getQuests() {
     const res = await api.get('api/quests/')
-    AppState.quest = res.data
+    AppState.quests = res.data
   }
 
   async createQuest(newQuest) {
