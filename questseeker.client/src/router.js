@@ -25,7 +25,7 @@ const routes = [
   },
   {
     path: questId + '/map',
-    name: 'Map',
+    name: 'MapPage',
     component: loadPage('MapPage'),
     beforeEnter: authGuard
   },

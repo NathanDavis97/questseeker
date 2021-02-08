@@ -24,12 +24,14 @@ class QuestService {
     // filter
     this.getQuests()
     const matchingAccessCode = AppState.quests.filter(quest => quest.accessCode === inputCode.accessCode)
-    const relationshipInfo = { questId: matchingAccessCode[0].id }
+
+    const relationshipInfo = { questId: matchingAccessCode[0].id, accountId: inputCode.accountId }
+    logger.log(matchingAccessCode)
 
     // TODO test with and without await
     await api.post('api/userquests', relationshipInfo)
     AppState.activeQuest = matchingAccessCode[0]
-    router.push({ name: 'MapPage', params: { questId: matchingAccessCode[0].id } })
+    router.push({ name: 'MapPage', params: { questid: matchingAccessCode[0].id } })
     // ANCHOR Make onMounted to get all quests. To filter next line
     // Route will equal api/userquests
     // TODO filter through the quests array and find where the access codes from both quests and submitted access code match.

@@ -105,17 +105,19 @@
 
 <script>
 import { questService } from '../services/QuestService'
-import { reactive, onMounted } from 'vue'
+import { reactive, onMounted, computed } from 'vue'
 import { logger } from '../utils/Logger'
 import router from '../router'
 import $ from 'jquery'
+import { AppState } from '../AppState'
 
 export default {
   name: 'Home',
   setup() {
     const state = reactive({
+      user: computed(() => AppState.user),
       newQuest: {},
-      codeInput: {}
+      codeInput: { accountId: AppState.account.id }
     })
     onMounted(async() => {
       // REVIEW do we need to get the quests on page load? Or do we just put that request in with the join quest.
