@@ -115,6 +115,7 @@ export default {
   name: 'Home',
   setup() {
     const state = reactive({
+      account: computed(() => AppState.account),
       user: computed(() => AppState.user),
       newQuest: {},
       codeInput: { accountId: AppState.account.id }
