@@ -42,7 +42,8 @@ export default {
      */
     let mapMarkers = []
     const loadMapMarkers = () => {
-      if (!props.markers.length) return
+      // removed .length for now
+      if (!props.markers) return
       props.markers.forEach(markerInfo => {
         const mapMarker = new window.google.maps.Marker({
           position: new window.google.maps.LatLng(markerInfo.lat, markerInfo.lng),

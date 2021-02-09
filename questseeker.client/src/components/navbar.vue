@@ -4,7 +4,7 @@
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"
-          src="../assets/img/cw-logo.png"
+          src="../assets/img/QUESTSEEKER.png"
           height="45"
         />
       </div>
@@ -122,6 +122,9 @@ a:hover {
   text-transform: uppercase;
 }
 .nav-item .nav-link.router-link-exact-active{
-  color: var(--primary);
+  color:#FAED26;
+}
+.navbar{
+  background-color: #2D4473 !important;
 }
 </style>
