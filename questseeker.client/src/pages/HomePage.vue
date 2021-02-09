@@ -105,7 +105,7 @@
 
 <script>
 import { questService } from '../services/QuestService'
-import { reactive, onMounted, computed } from 'vue'
+import { reactive, computed } from 'vue'
 import { logger } from '../utils/Logger'
 import router from '../router'
 import $ from 'jquery'
@@ -120,14 +120,15 @@ export default {
       newQuest: {},
       codeInput: { accountId: AppState.account.id }
     })
-    onMounted(async() => {
-      // REVIEW do we need to get the quests on page load? Or do we just put that request in with the join quest.
-      // try {
-      //   await questService.getQuests()
-      // } catch (error) {
-      //   logger.error(error)
-      // }
-    })
+    // onMounted(async() => {
+    // REVIEW Need to access the current account for the join quest to work on page refresh. I think that it is not in the AppState until
+    // there has been some form of interaction from the user to set the AppState.account.id. Because it works when you create a quest and then join it.
+    // try {
+    //   await questService.getQuests()
+    // } catch (error) {
+    //   logger.error(error)
+    // }
+    // })
     return {
       state,
       async createQuest() {
@@ -141,6 +142,8 @@ export default {
       },
       async joinQuest() {
         try {
+          debugger
+          AppState.account.id = state.user.id
           await questService.joinQuest(state.codeInput)
           $('#JoinQuestModal').modal('hide')
         } catch (error) {
