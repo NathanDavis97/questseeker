@@ -4,10 +4,10 @@
       <div class="col d-flex justify-content-center">
         <form class="form-inline">
           <div class="form-group mx-sm-3 mb-2 my-4">
-            <input type="password" class="form-control" id="inputPassword2" placeholder="Add Location">
+            <input type="text" class="form-control" v-model="state.location.value" id="inputPassword2" placeholder="Add Location">
           </div>
           <!-- Button trigger modal -->
-          <button type="submit" class="btn btn-primary mb-2 my-4" data-toggle="modal" data-target="#ObjectiveCreationModal">
+          <button type="button" @click="findLocation" class="btn btn-primary mb-2 my-4" data-toggle="modal" data-target="#ObjectiveCreationModal">
             +
           </button>
 
@@ -52,7 +52,8 @@
                  :zoom="15"
                  map-type="roadmap"
                  :center="{ lat: 43.6150, lng: -116.2023 }"
-                 :markers="markers"
+                 :markers="state.markers"
+                 :map-did-load="handleMapDidLoad"
         >
         </HostMap>
       </div>
@@ -71,15 +72,50 @@
 </template>
 
 <script>
+import { reactive } from 'vue'
+import { logger } from '../utils/Logger'
+// import { AppState } from '../AppState'
 export default {
   name: 'AddLocationPage',
   setup() {
-    const markers = [
-      { lat: 43.6150, lng: -116.2023, title: 'Egyptian Theatre' },
-      { lat: 43.7150, lng: -116.20 },
-      { lat: 43.6130, lng: -117.2023 }
-    ]
-    return { markers }
+    const state = reactive({
+      markers: [],
+      objective: {},
+      location: {},
+      result: {}
+    })
+    let geoCoderService = null
+    const addLocation = (location) => {
+      state.markers = [...state.markers, {
+        ...location.position,
+        title: location.address
+      }]
+      // hostMapService.loadMapMarkers()
+      logger.log('markers', state.markers)
+    }
+    const findLocation = () => {
+      geoCoderService.geocode({ address: state.location.value },
+        (results, status) => {
+          if (status !== 'OK') {
+            window.alert('No Result')
+          } else {
+            logger.log(results)
+            state.result = {
+              position: results[0].geometry.location.toJSON(),
+              address: results[0].formatted_address
+            }
+            addLocation(state.result)
+            logger.log(state.result)
+          }
+        })
+    }
+    const handleMapDidLoad = (map, GServices) => {
+      logger.log('loaded')
+      logger.log('map', map)
+      logger.log('services', GServices)
+      geoCoderService = new GServices.Geocoder()
+    }
+    return { handleMapDidLoad, findLocation, state, addLocation }
   },
   components: {}
 }

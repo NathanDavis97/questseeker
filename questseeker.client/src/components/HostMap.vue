@@ -3,7 +3,8 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, reactive, computed, watch } from 'vue'
+import { AppState } from '../AppState'
 
 export default {
   name: 'HostMap',
@@ -13,7 +14,8 @@ export default {
     zoom: Number,
     mapType: String,
     disableUI: Boolean,
-    markers: Array
+    markers: Array,
+    mapDidLoad: Function
   },
   setup(props) {
     // the google map object
@@ -21,6 +23,12 @@ export default {
 
     // the map element in the templste
     const mapDivRef = ref(null)
+
+    let currentMarkers = []
+
+    const state = reactive({
+      markers: computed(() => AppState.markers)
+    })
 
     // load in the google script
     onMounted(() => {
@@ -36,22 +44,36 @@ export default {
       googleMapScript.setAttribute('async', '')
       document.head.appendChild(googleMapScript)
     })
+    watch(
+      () => props.markers,
+      () => {
+        loadMapMarkers()
+      }
+    )
+    const clearMarkers = () => {
+      currentMarkers.forEach(m => {
+        m.map = null
+      })
+      currentMarkers = []
+    }
 
     /**
      * this function is called as soon as the map is initialized
      */
-    let mapMarkers = []
+    // let mapMarkers = []
     const loadMapMarkers = () => {
       if (!props.markers.length) return
+      clearMarkers()
       props.markers.forEach(markerInfo => {
         const mapMarker = new window.google.maps.Marker({
           position: new window.google.maps.LatLng(markerInfo.lat, markerInfo.lng),
           map: map.value,
           title: markerInfo.title
         })
-        mapMarkers = [...mapMarkers, mapMarker]
+        // mapmarkers = [...AppState.markers, mapMarker]
+        currentMarkers.push(mapMarker)
       })
-      return mapMarkers
+      return AppState.markers
     }
 
     window.initMap = () => {
@@ -63,9 +85,11 @@ export default {
 
       })
       loadMapMarkers()
+      props.mapDidLoad && props.mapDidLoad(map, window.google.maps)
     }
     return {
-      mapDivRef
+      mapDivRef,
+      state
     }
   }
 }
