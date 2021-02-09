@@ -24,7 +24,7 @@ class QuestService {
     // filter
     await this.getQuests()
     const matchingAccessCode = AppState.quests.filter(quest => quest.accessCode === inputCode.accessCode)
-
+    // logger.log(quest)
     const relationshipInfo = { questId: matchingAccessCode[0].id, accountId: inputCode.accountId }
     logger.log(matchingAccessCode)
 
