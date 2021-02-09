@@ -5,7 +5,7 @@ export const AppState = reactive({
 
   user: {},
   account: {},
-
+  currentLocation: {},
   objectives: [],
   quests: [],
   activeQuest: {},

@@ -2,7 +2,7 @@
   <div class="AddLocationPage container-fluid">
     <div class="AddLocationFormSection row">
       <div class="col d-flex justify-content-center">
-        <form class="form-inline">
+        <form class="form-inline" @submit.prevent="createObjective">
           <div class="form-group mx-sm-3 mb-2 my-4">
             <input type="text" class="form-control" v-model="state.location.value" id="inputPassword2" placeholder="Add Location">
           </div>
@@ -30,11 +30,11 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <input type="text" class="form-control my-4" placeholder="Objective Title">
-                  <input type="text" class="form-control my-4" placeholder="Objective Description">
+                  <input type="text" class="form-control my-4" placeholder="Objective Title" v-model="state.objective.title">
+                  <input type="text" class="form-control my-4" placeholder="Objective Description" v-model="state.objective.body">
                   <!-- TODO change what the input type is so that there is a min and max Range -->
-                  <input type="text" class="form-control my-1" placeholder="Range">
-                  <button type="button" class="btn btn-primary">
+                  <!-- <input type="text" class="form-control my-1" placeholder="Range" v-model="state.objective.range"> -->
+                  <button type="submit" class="btn btn-primary">
                     Create Objective
                   </button>
                 </div>
@@ -74,10 +74,14 @@
 <script>
 import { reactive } from 'vue'
 import { logger } from '../utils/Logger'
-// import { AppState } from '../AppState'
+import { AppState } from '../AppState'
+import { hostMapService } from '../services/HostMapService'
+import $ from 'jquery'
+import { useRoute } from 'vue-router'
 export default {
   name: 'AddLocationPage',
   setup() {
+    const route = useRoute()
     const state = reactive({
       markers: [],
       objective: {},
@@ -92,6 +96,7 @@ export default {
       }]
       // hostMapService.loadMapMarkers()
       logger.log('markers', state.markers)
+      AppState.currentLocation = location.position
     }
     const findLocation = () => {
       geoCoderService.geocode({ address: state.location.value },
@@ -115,7 +120,21 @@ export default {
       logger.log('services', GServices)
       geoCoderService = new GServices.Geocoder()
     }
-    return { handleMapDidLoad, findLocation, state, addLocation }
+    return {
+      handleMapDidLoad,
+      findLocation,
+      state,
+      addLocation,
+      async createObjective() {
+        try {
+          await hostMapService.createObjective(state.objective, route.params.questid)
+          AppState.currentLocation = {}
+          $('#ObjectiveCreationModal').modal('hide')
+        } catch (error) {
+          logger.error(error)
+        }
+      }
+    }
   },
   components: {}
 }

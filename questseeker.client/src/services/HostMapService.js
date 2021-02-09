@@ -1,19 +1,17 @@
 // import { AppState } from '../AppState'
 
+import { AppState } from '../AppState'
+import { logger } from '../utils/Logger'
+import { api } from './AxiosService'
+
 class HostMapService {
-  // loadMapMarkers(markers) {
-  //   if (!markers.length) return
-  //   // clearMarkers()
-  //   markers.forEach(markerInfo => {
-  //     const mapMarker = new window.google.maps.Marker({
-  //       position: new window.google.maps.LatLng(markerInfo.lat, markerInfo.lng),
-  //       map: map.value,
-  //       title: markerInfo.title
-  //     })
-  //     AppState.markers = [...AppState.markers, mapMarker]
-  //     // currentMarkers.push(mapMarker)
-  //   })
-  // }
+  async createObjective(objective, questId) {
+    objective.questId = questId
+    objective.location = AppState.currentLocation
+    logger.log(objective)
+    const res = await api.post('api/objectives', objective)
+    logger.log(res.data)
+  }
 }
 
 export const hostMapService = new HostMapService()
