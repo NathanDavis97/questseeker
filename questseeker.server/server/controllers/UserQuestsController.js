@@ -12,7 +12,7 @@ export class UserQuestsController extends BaseController {
 
   async create(req, res, next) {
     try {
-      req.body.userId = req.userInfo.id
+      req.body.accountId = req.userInfo.id
       const data = await userQuestsService.create(req.body)
       res.send(data)
     } catch (error) {
