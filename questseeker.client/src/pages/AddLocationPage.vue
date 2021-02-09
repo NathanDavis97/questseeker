@@ -60,12 +60,15 @@
     </div>
     <div class="row">
       <div class="col d-flex justify-content-end my-5">
-        <!-- FIXME remove router links here Just for basic navigation for now-->
-        <!-- <router-link :to="{ name: 'ObjectiveReviewPage', params: {questId: route.params.id}}"> -->
         <button class="btn btn-primary">
           Use Current Location
         </button>
-        <!-- </router-link> -->
+        <!-- FIXME remove router links here Just for basic navigation for now-->
+        <router-link :to="{ name: 'ObjectiveReviewPage', params: {questid: state.questId}}">
+          <button class="btn btn-primary">
+            Review Objectives
+          </button>
+        </router-link>
       </div>
     </div>
   </div>
@@ -86,7 +89,9 @@ export default {
       markers: [],
       objective: {},
       location: {},
-      result: {}
+      result: {},
+      questId: route.params.questid
+
     })
     let geoCoderService = null
     const addLocation = (location) => {

@@ -44,7 +44,7 @@ const routes = [
   {
     path: questId + '/objectivereviewpage',
     name: 'ObjectiveReviewPage',
-    component: loadPage('ObjectiveReviewPagePage'),
+    component: loadPage('ObjectiveReviewPage'),
     beforeEnter: authGuard
   },
   {
