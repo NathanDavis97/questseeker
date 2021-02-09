@@ -142,7 +142,6 @@ export default {
       },
       async joinQuest() {
         try {
-          debugger
           AppState.account.id = state.user.id
           await questService.joinQuest(state.codeInput)
           $('#JoinQuestModal').modal('hide')
