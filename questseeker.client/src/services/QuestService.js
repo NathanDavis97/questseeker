@@ -20,6 +20,12 @@ class QuestService {
     return res.data.id
   }
 
+  async questJoinable(questId, update) {
+    const questData = { isJoinable: update }
+    const res = await api.put('api/quests/' + questId, questData)
+    console.log(res.data, questData)
+  }
+
   async joinQuest(inputCode) {
     // filter
     await this.getQuests()
