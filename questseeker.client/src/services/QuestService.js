@@ -23,7 +23,13 @@ class QuestService {
   async questJoinable(questId, update) {
     const questData = { isJoinable: update }
     const res = await api.put('api/quests/' + questId, questData)
-    console.log(res.data, questData)
+    logger.log(res.data, questData)
+  }
+
+  async questActive(questId, update) {
+    const questData = { isActive: update }
+    const res = await api.put('api/quests/' + questId, questData)
+    logger.log(res.data, questData)
   }
 
   async joinQuest(inputCode) {

@@ -7,7 +7,7 @@
     <div>
       <div class="row justify-content-center">
         <div class="col-6 mb-4">
-          <button class="btn btn-outline-primary">
+          <button class="btn btn-outline-primary" @click="questActive">
             <small>
               START THE QUEST</small>
           </button>
@@ -68,6 +68,15 @@ export default {
           state.activeQuest.isJoinable = !state.activeQuest.isJoinable
           const update = state.activeQuest.isJoinable
           await questService.questJoinable(state.activeQuest.id, update)
+        } catch (error) {
+          logger.error(error)
+        }
+      },
+      async questActive() {
+        try {
+          state.activeQuest.isActive = !state.activeQuest.isActive
+          const update = state.activeQuest.isActive
+          await questService.questActive(state.activeQuest.id, update)
         } catch (error) {
           logger.error(error)
         }
