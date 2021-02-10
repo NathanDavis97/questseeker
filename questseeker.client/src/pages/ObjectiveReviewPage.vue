@@ -15,8 +15,11 @@
       </div>
       <div class="row">
         <div class="col text-center">
+          <p class="m-2">
+            Your Quest Code:
+          </p>
           <div class="card bottom-c">
-            <h1>V51GB8</h1>
+            <h1>{{ state.activeQuest.accessCode }}</h1>
           </div>
         </div>
       </div>
