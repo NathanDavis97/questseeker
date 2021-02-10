@@ -11,7 +11,7 @@
   </main>
   <footer>
     <div class="foot-bg text-light text-center p-4">
-      Made by Justin, Nathan, Steffan, Kris
+      Developers: Justin, Nathan, Steffen, Kris
     </div>
   </footer>
 </template>

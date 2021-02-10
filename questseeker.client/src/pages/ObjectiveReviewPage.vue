@@ -15,7 +15,6 @@
             <small>
               START THE QUEST</small>
           </button>
-
           <button class="btn btn-outline-success m-1" v-if="state.activeQuest.isJoinable === true" @click="questJoinable">
             <small>
               Joinable</small>
