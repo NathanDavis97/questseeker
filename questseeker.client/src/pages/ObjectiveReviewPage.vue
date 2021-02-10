@@ -7,13 +7,22 @@
     <div>
       <div class="row justify-content-center">
         <div class="col-6 mb-4">
-          <button class="btn btn-outline-primary" @click="questActive">
+          <button class="btn btn-outline-success m-1" v-if="state.activeQuest.isActive === true" @click="questActive">
+            <small>
+              Quest now ACTIVE!</small>
+          </button>
+          <button class="btn btn-outline-danger m-1" v-if="state.activeQuest.isActive === false" @click="questActive">
             <small>
               START THE QUEST</small>
           </button>
-          <button class="btn btn-outline-primary" @click="questJoinable">
+
+          <button class="btn btn-outline-success m-1" v-if="state.activeQuest.isJoinable === true" @click="questJoinable">
             <small>
-              Create Quest Code</small>
+              Joinable</small>
+          </button>
+          <button class="btn btn-outline-danger m-1" v-if="state.activeQuest.isJoinable === false" @click="questJoinable">
+            <small>
+              NOT Joinable</small>
           </button>
         </div>
       </div>
@@ -29,7 +38,7 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-6 m-4">
-          <button class="btn btn-outline-danger">
+          <button class="btn btn-outline-danger" v-if="state.activeQuest.isJoinable === true && state.activeQuest.isActive === true">
             <small>
               Current Answers</small>
           </button>
