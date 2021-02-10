@@ -16,7 +16,7 @@ class QuestService {
     this.getQuests()
     AppState.quests.push(res.data)
     AppState.activeQuest = res.data
-    logger.log(res.data)
+    logger.log(res.data, AppState.activeQuest, 'setting active quest')
     return res.data.id
   }
 
@@ -30,6 +30,11 @@ class QuestService {
 
     // TODO test with and without await
     await api.post('api/userquests', relationshipInfo)
+
+    const res = await api.get('api/quests/' + matchingAccessCode[0].id + '/objectives')
+    AppState.markers = res.data
+
+    logger.log('quest to pull obj', res.data)
     AppState.activeQuest = matchingAccessCode[0]
     router.push({ name: 'MapPage', params: { questid: matchingAccessCode[0].id } })
     // ANCHOR Make onMounted to get all quests. To filter next line
