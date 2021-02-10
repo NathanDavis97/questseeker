@@ -101,7 +101,9 @@ export default {
       }]
       // hostMapService.loadMapMarkers()
       logger.log('markers', state.markers)
-      AppState.currentLocation = location.position
+      logger.log('markers', location)
+
+      AppState.currentLocation = location
     }
     const findLocation = () => {
       geoCoderService.geocode({ address: state.location.value },

@@ -7,7 +7,8 @@ import { api } from './AxiosService'
 class HostMapService {
   async createObjective(objective, questId) {
     objective.questId = questId
-    objective.location = AppState.currentLocation
+    objective.location = AppState.currentLocation.position
+    objective.location.address = AppState.currentLocation.address
     logger.log(objective)
     const res = await api.post('api/objectives', objective)
     logger.log(res.data)
