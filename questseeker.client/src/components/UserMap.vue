@@ -3,7 +3,8 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, reactive } from 'vue'
+// import { AppState } from '../AppState'
 
 export default {
   name: 'UserMap',
@@ -15,6 +16,7 @@ export default {
     disableUI: Boolean,
     markers: Array
   },
+
   setup(props) {
     // the google map object
     const map = ref(null)
@@ -22,6 +24,9 @@ export default {
     // the map element in the templste
     const mapDivRef = ref(null)
 
+    const state = reactive({
+      // markers: computed(() => AppState.objectives)
+    })
     // load in the google script
     onMounted(() => {
       // key is is the .env file
@@ -43,7 +48,7 @@ export default {
     let mapMarkers = []
     const loadMapMarkers = () => {
       // removed .length for now
-      if (!props.markers) return
+      if (!props.markers.length) return
       props.markers.forEach(markerInfo => {
         const mapMarker = new window.google.maps.Marker({
           position: new window.google.maps.LatLng(markerInfo.lat, markerInfo.lng),
@@ -66,7 +71,8 @@ export default {
       loadMapMarkers()
     }
     return {
-      mapDivRef
+      mapDivRef,
+      state
     }
   }
 }
