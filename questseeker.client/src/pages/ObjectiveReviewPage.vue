@@ -50,7 +50,7 @@ export default {
         logger.log(state.activeQuest, 'getting activequest')
         await objectiveService.getAllObjectives(state.activeQuest.id)
       } catch (error) {
-
+        logger.error(error)
       }
     })
     return { state }

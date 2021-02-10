@@ -16,7 +16,7 @@ class QuestService {
     this.getQuests()
     AppState.quests.push(res.data)
     AppState.activeQuest = res.data
-    logger.log(res.data)
+    logger.log(res.data, AppState.activeQuest, 'setting active quest')
     return res.data.id
   }
 
