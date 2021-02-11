@@ -5,30 +5,28 @@
                         :objective-prop="objective"
     />
     <div>
-      <div class="row justify-content-center">
-        <div class="col-6 mb-4">
-          <button class="btn btn-outline-success m-1" v-if="state.activeQuest.isActive === true" @click="questActive">
-            <small>
-              Quest now ACTIVE!</small>
-          </button>
-          <button class="btn btn-outline-danger m-1" v-if="state.activeQuest.isActive === false" @click="questActive">
-            <small>
-              START THE QUEST</small>
-          </button>
-          <button class="btn btn-outline-success m-1" v-if="state.activeQuest.isJoinable === true" @click="questJoinable">
-            <small>
-              Joinable</small>
-          </button>
-          <button class="btn btn-outline-danger m-1" v-if="state.activeQuest.isJoinable === false" @click="questJoinable">
-            <small>
-              NOT Joinable</small>
-          </button>
-        </div>
+      <div class="row justify-content-around">
+        <button class="btn activ m-1" v-if="state.activeQuest.isJoinable === true" @click="questJoinable">
+          <small>
+            Give the Code</small>
+        </button>
+        <button class="btn not-active m-1" v-if="state.activeQuest.isJoinable === false" @click="questJoinable">
+          <small>
+            Allow Friends</small>
+        </button>
+        <button class="btn activ m-1" v-if="state.activeQuest.isActive === true" @click="questActive">
+          <small>
+            Quest ACTIVE</small>
+        </button>
+        <button class="btn not-active m-1" v-if="state.activeQuest.isActive === false" @click="questActive">
+          <small>
+            Activate Quest</small>
+        </button>
       </div>
       <div class="row" v-if="state.activeQuest.isJoinable === true">
         <div class="col text-center">
           <p class="m-2">
-            Your Quest Code:
+            Access Code:
           </p>
           <div class="card bottom-c">
             <h1>{{ state.activeQuest.accessCode }}</h1>
@@ -36,10 +34,11 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-6 m-4">
+        <div class="col-6 m-4 text-center">
           <button class="btn btn-outline-danger" v-if="state.activeQuest.isJoinable === true && state.activeQuest.isActive === true">
             <small>
-              Current Answers</small>
+              Current Answers
+            </small>
           </button>
         </div>
       </div>
@@ -96,5 +95,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+div{
+  font-family: 'Montserrat Alternative';
+}
+.activ{
+  position: relative;
+  font-family: 'Montserrat Alternative';
+  border: 2px solid #FAED26 ;
+  color: #FAED26;
+  background-color: #0A0732;
+  box-shadow: 0px 3px 8px black;
+}
+
+.not-active{
+  position: relative;
+  font-family: 'Montserrat Alternative';
+  border: 2px solid #0A0732;
+  color: #0A0732;
+  box-shadow: 0px 3px 8px black;
+}
 
 </style>

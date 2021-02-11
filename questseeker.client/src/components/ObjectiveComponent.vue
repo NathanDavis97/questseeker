@@ -1,9 +1,9 @@
 <template>
   <div class="ObjectiveComponent">
     <div class="row justify-content-center">
-      <div class="col-8 m-3">
-        <div class="card  text-center">
-          <strong>{{ objectiveProp.title }}</strong>
+      <div class="col-8 m-2">
+        <div class="card text-center">
+          <h3><strong>{{ objectiveProp.title }}</strong></h3>
           <p>{{ objectiveProp.location.address }}</p>
         </div>
       </div>
@@ -25,5 +25,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.card{
+  font-family: 'Montserrat Alternative';;
+  box-shadow: 0px 3px 8px black;
+}
 </style>
