@@ -1,5 +1,10 @@
 <template>
-  <div class="ObjectiveDetailsPage">
+  <div class="ObjectiveDetailsPage container-fluid">
+    <div class="row">
+      <div class="col">
+        <p>This is the obje deets page</p>
+      </div>
+    </div>
   </div>
 </template>
 

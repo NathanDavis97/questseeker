@@ -1,4 +1,5 @@
 import { AppState } from '../AppState'
+import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
 
 class ObjectiveService {
@@ -7,7 +8,7 @@ class ObjectiveService {
       const res = await api.get('api/quests/' + id + '/objectives')
       AppState.objectives = res.data
     } catch (error) {
-
+      logger.error(error)
     }
   }
 }
