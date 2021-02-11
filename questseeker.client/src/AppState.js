@@ -10,5 +10,6 @@ export const AppState = reactive({
   quests: [],
   activeQuest: {},
   answers: [],
-  markers: []
+  markers: [],
+  teams: {}
 })

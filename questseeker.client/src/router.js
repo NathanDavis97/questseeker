@@ -50,7 +50,7 @@ const routes = [
   {
     path: questId + '/teamspage',
     name: 'TeamsPage',
-    component: loadPage('TeamsPagePage'),
+    component: loadPage('TeamsPage'),
     beforeEnter: authGuard
   },
   {
