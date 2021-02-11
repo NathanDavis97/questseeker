@@ -23,6 +23,7 @@ export default {
   setup() {
     const state = reactive({
       markers: computed(() => AppState.markers),
+      passingObject: {},
       markerInfo: []
     })
     return {
@@ -30,7 +31,13 @@ export default {
       // function that goes over state.markers. for each marker strips off and takes the title and location. Then push into state.markerInfo.
       formatMarkerInfo() {
         state.markers.forEach(marker => {
-          state.markerInfo.push(marker.location)
+          state.passingObject.location = marker.location
+          state.passingObject.title = marker.title
+          state.passingObject.objectiveId = marker.id
+          state.markerInfo.push(state.passingObject)
+
+          // TODO get title later???
+          // state.markerInfo.push(marker.title)
           logger.log('this is the formatted', state.markerInfo)
         })
         return state.markerInfo
