@@ -10,6 +10,15 @@ class TeamService {
       logger.error(error)
     }
   }
+
+  async getAnswers(accountId, questId) {
+    try {
+      const res = await api.get('api/answers/' + accountId).filter(questId)
+      AppState.answers = res.data
+    } catch (error) {
+      logger.error(error)
+    }
+  }
 }
 
 export const teamService = new TeamService()

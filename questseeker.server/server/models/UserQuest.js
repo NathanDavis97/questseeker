@@ -9,7 +9,7 @@ const UserQuest = new Schema(
   { timestamps: true, toJSON: { virtuals: true } }
 )
 UserQuest.virtual('creator', {
-  localField: 'creatorId',
+  localField: 'accountId',
   ref: 'Account',
   foreignField: '_id',
   justOne: true

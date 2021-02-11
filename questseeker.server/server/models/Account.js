@@ -13,5 +13,11 @@ const Account = new Schema(
   },
   { timestamps: true, _id: false, toJSON: { virtuals: true } }
 )
+Account.virtual('creator', {
+  localField: 'creatorId',
+  ref: 'Account',
+  foreignField: '_id',
+  justOne: true
+})
 
 export default Account

@@ -7,7 +7,7 @@ class UserQuestsService {
   }
 
   async getUserByQuestId(query) {
-    const results = await dbContext.UserQuests.find(query).populate('account', 'creator')
+    const results = await dbContext.UserQuests.find(query).populate('creator')
     return results
   }
 
