@@ -37,7 +37,10 @@
         <div class="col-6 m-4 text-center">
           <button class="btn btn-outline-danger" v-if="state.activeQuest.isJoinable === true && state.activeQuest.isActive === true">
             <small>
-              Current Answers
+              <router-link :to="{name: 'TeamsPage', params: {questid: state.questId}}">
+                current
+                answers
+              </router-link>
             </small>
           </button>
         </div>
@@ -52,13 +55,15 @@ import { objectiveService } from '../services/ObjectiveService'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import { questService } from '../services/QuestService'
-
+import { useRoute } from 'vue-router'
 export default {
   name: 'ObjectiveReviewPage',
   setup() {
+    const route = useRoute()
     const state = reactive({
       activeQuest: computed(() => AppState.activeQuest),
-      objectives: computed(() => AppState.objectives)
+      objectives: computed(() => AppState.objectives),
+      questId: route.params.questid
     })
     onMounted(async() => {
       try {
