@@ -15,7 +15,7 @@
             </p>
           </div>
         </div>
-        <div class="row justify-content-center my-4" v-if="!state.status == true">
+        <div class="row justify-content-center my-4" v-if="!state.status">
           <form class="form-inline" @submit.prevent="submitAnswer">
             <div class="form-group mx-sm-3 mb-2 my-4">
               <input type="text"
@@ -49,7 +49,6 @@ export default {
     const route = useRoute()
     const state = reactive({
       objectiveId: { id: route.params.id },
-      accountId: computed(() => AppState.account.id),
       objective: computed(() => AppState.activeObjective),
       status: computed(() => AppState.status),
       answer: { isSubmitted: true, objectiveId: route.params.id }
@@ -57,8 +56,8 @@ export default {
     onMounted(async() => {
       try {
         await objectiveService.getObjective(state.objectiveId)
-        debugger
-        await objectiveService.getAnswers(state.objectiveId, state.accountId)
+        // TODO await the login before this fires off
+        await objectiveService.getAnswers(state.objectiveId)
       } catch {
       }
     })

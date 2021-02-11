@@ -23,9 +23,10 @@ class ObjectiveService {
     logger.log(answer)
   }
 
-  async getAnswers(objective, account) {
-    const res = await api.get('api/obejctives/' + objective.id + '/answers')
-    const filt = res.data.filter(answer => answer.creator.id === account)
+  async getAnswers(objective) {
+    // debugger
+    const res = await api.get('api/objectives/' + objective.id + '/answers')
+    const filt = await res.data.filter(answer => answer.creator.id === AppState.account.id)
 
     if (filt.length > 0) {
       AppState.status = true
