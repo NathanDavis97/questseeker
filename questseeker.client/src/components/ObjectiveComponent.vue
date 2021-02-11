@@ -2,7 +2,7 @@
   <div class="ObjectiveComponent">
     <div class="row justify-content-center">
       <div class="col-8 m-3">
-        <div class="card  text-center">
+        <div class="card text-center">
           <strong>{{ objectiveProp.title }}</strong>
           <p>{{ objectiveProp.location.address }}</p>
         </div>

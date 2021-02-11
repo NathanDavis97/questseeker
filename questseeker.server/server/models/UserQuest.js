@@ -8,5 +8,11 @@ const UserQuest = new Schema(
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
+UserQuest.virtual('creator', {
+  localField: 'creatorId',
+  ref: 'Account',
+  foreignField: '_id',
+  justOne: true
+})
 
 export default UserQuest

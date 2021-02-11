@@ -36,26 +36,29 @@ class QuestService {
     // filter
     await this.getQuests()
     const matchingAccessCode = AppState.quests.filter(quest => quest.accessCode === inputCode.accessCode)
-    // logger.log(quest)
-    const relationshipInfo = { questId: matchingAccessCode[0].id, accountId: inputCode.accountId }
     logger.log(matchingAccessCode)
+    if (matchingAccessCode[0].isJoinable === true) {
+      // logger.log(quest)
+      const relationshipInfo = { questId: matchingAccessCode[0].id, accountId: inputCode.accountId }
+      logger.log(matchingAccessCode)
 
-    // TODO test with and without await
-    await api.post('api/userquests', relationshipInfo)
+      // TODO test with and without await
+      await api.post('api/userquests', relationshipInfo)
 
-    const res = await api.get('api/quests/' + matchingAccessCode[0].id + '/objectives')
-    AppState.markers = res.data
+      const res = await api.get('api/quests/' + matchingAccessCode[0].id + '/objectives')
+      AppState.markers = res.data
 
-    logger.log('quest to pull obj', res.data)
-    AppState.activeQuest = matchingAccessCode[0]
-    router.push({ name: 'MapPage', params: { questid: matchingAccessCode[0].id } })
-    // ANCHOR Make onMounted to get all quests. To filter next line
-    // Route will equal api/userquests
-    // TODO filter through the quests array and find where the access codes from both quests and submitted access code match.
-    // Make relationship between individual and quest. (Pushing user and quest into many to many {userquest})
-    // Set as active quest for user in AppState.
-    // Router Push user to map page.
-    // SUPPLY THE BACK END 1-Quest Id 2-Status. (Back end will pull user id off of account)
+      logger.log('quest to pull obj', res.data)
+      AppState.activeQuest = matchingAccessCode[0]
+      router.push({ name: 'MapPage', params: { questid: matchingAccessCode[0].id } })
+      // ANCHOR Make onMounted to get all quests. To filter next line
+      // Route will equal api/userquests
+      // TODO filter through the quests array and find where the access codes from both quests and submitted access code match.
+      // Make relationship between individual and quest. (Pushing user and quest into many to many {userquest})
+      // Set as active quest for user in AppState.
+      // Router Push user to map page.
+      // SUPPLY THE BACK END 1-Quest Id 2-Status. (Back end will pull user id off of account)
+    } else { return window.alert('This Quest is not Joinable') }
   }
 }
 export const questService = new QuestService()
