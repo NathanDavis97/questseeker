@@ -8,8 +8,7 @@ export default {
   name: 'AnswersPage',
   setup() {
     return {}
-  },
-  components: {}
+  }
 }
 </script>
 

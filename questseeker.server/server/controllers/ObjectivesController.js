@@ -39,7 +39,7 @@ export class ObjectivesController extends BaseController {
   async getAllAnswers(req, res, next) {
     try {
       req.query.user = req.params.user
-      const data = await answersService.find({ objectivesId: req.params.id })
+      const data = await answersService.find({ objectiveId: req.params.id })
       res.send(data)
     } catch (error) {
       next(error)

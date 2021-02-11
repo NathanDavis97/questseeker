@@ -12,5 +12,6 @@ export const AppState = reactive({
   status: Boolean,
   activeQuest: {},
   answers: [],
-  markers: []
+  markers: [],
+  teams: {}
 })
