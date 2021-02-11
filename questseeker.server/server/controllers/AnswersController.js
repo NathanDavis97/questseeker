@@ -8,6 +8,7 @@ export class AnswersController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
+      .get('/:id', this.getAllAnswersByUser)
       .put('/:id', this.edit)
       .post('', this.create)
   }
@@ -16,6 +17,16 @@ export class AnswersController extends BaseController {
     try {
       req.query.user = req.params.user
       const data = await answersService.find(req.query)
+      res.send(data)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getAllAnswersByUser(req, res, next) {
+    try {
+      req.query.user = req.params.user
+      const data = await answersService.find({ creatorId: req.params.id })
       res.send(data)
     } catch (error) {
       next(error)
