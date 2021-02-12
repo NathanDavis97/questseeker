@@ -58,7 +58,27 @@ class QuestService {
       // Set as active quest for user in AppState.
       // Router Push user to map page.
       // SUPPLY THE BACK END 1-Quest Id 2-Status. (Back end will pull user id off of account)
+      this.formatMarkerInfo()
     } else { return window.alert('This Quest is not Joinable') }
+  }
+
+  formatMarkerInfo() {
+    AppState.markers.forEach(marker => {
+      // debugger
+      const passingObject = {}
+      passingObject.lat = marker.location.lat
+      passingObject.lng = marker.location.lng
+      passingObject.address = marker.location.address
+      passingObject.title = marker.title
+      passingObject.objectiveId = marker.id
+      AppState.markerInfo.push(passingObject)
+      // state.passingObject = {}
+
+      // TODO get title later???
+      // state.markerInfo.push(marker.title)
+      logger.log('this is the formatted', AppState.markerInfo)
+    })
+    return AppState.markerInfo
   }
 }
 export const questService = new QuestService()

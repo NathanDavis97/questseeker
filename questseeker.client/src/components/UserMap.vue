@@ -56,7 +56,7 @@ export default {
       if (!props.markers.length) return
       props.markers.forEach(markerInfo => {
         const mapMarker = new window.google.maps.Marker({
-          position: new window.google.maps.LatLng(markerInfo.location.lat, markerInfo.location.lng),
+          position: new window.google.maps.LatLng(markerInfo.lat, markerInfo.lng),
           map: map.value,
           title: markerInfo.title
           // store_id: markerInfo.id
@@ -70,8 +70,8 @@ export default {
           // Get user location:
           if (navigator.geolocation) {
             const objectiveLocation = {}
-            objectiveLocation.lat = markerInfo.location.lat
-            objectiveLocation.lng = markerInfo.location.lng
+            objectiveLocation.lat = markerInfo.lat
+            objectiveLocation.lng = markerInfo.lng
             objectiveLocation.id = markerInfo.objectiveId
             logger.log(markerInfo)
             await getDistance(function(p) {

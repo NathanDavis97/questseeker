@@ -1,4 +1,5 @@
 import { AppState } from '../AppState'
+import router from '../router'
 import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
 
@@ -20,14 +21,17 @@ class ObjectiveService {
   async submitAnswer(answer) {
     // TODO do a check to see if answer has already been submitted by this user.
     await api.post('api/answers', answer)
+    AppState.status = true
+    router.push({ name: 'MapPage', params: answer.questId })
     logger.log(answer)
   }
 
   async getAnswers(objective) {
     // debugger
     const res = await api.get('api/objectives/' + objective.id + '/answers')
-    const filt = await res.data.filter(answer => answer.creator.id === AppState.account.id)
+    debugger
 
+    const filt = await res.data.filter(answer => answer.creatorId === AppState.account.id)
     if (filt.length > 0) {
       AppState.status = true
     } else {
