@@ -79,7 +79,7 @@ export default {
               logger.log(p)
               logger.log(state.userLocation)
               // debugger
-              if (state.userLocation.latitude <= objectiveLocation.lat + 0.1 && state.userLocation.latitude >= objectiveLocation.lat - 0.1 && state.userLocation.longitude <= objectiveLocation.lng + 0.1 && state.userLocation.longitude >= objectiveLocation.lng - 0.1) {
+              if (state.userLocation.latitude <= objectiveLocation.lat + 0.01 && state.userLocation.latitude >= objectiveLocation.lat - 0.01 && state.userLocation.longitude <= objectiveLocation.lng + 0.01 && state.userLocation.longitude >= objectiveLocation.lng - 0.01) {
                 router.push({ name: 'ObjectiveDetails', params: { questid: route.params.questid, id: objectiveLocation.id } })
               } else {
                 mapMarker.infoWindow.open(map.value, mapMarker)
