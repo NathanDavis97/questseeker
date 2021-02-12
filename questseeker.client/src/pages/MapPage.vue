@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { computed, onMounted, reactive } from 'vue'
+import { computed, reactive } from 'vue'
 import { AppState } from '../AppState'
 // import { logger } from '../utils/Logger'
 export default {
@@ -23,12 +23,6 @@ export default {
   setup() {
     const state = reactive({
       markers: computed(() => AppState.markerInfo)
-    })
-    onMounted(async() => {
-      try {
-      } catch (error) {
-        logger.error(error)
-      }
     })
 
     return {
