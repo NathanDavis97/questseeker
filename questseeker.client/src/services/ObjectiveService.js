@@ -29,7 +29,7 @@ class ObjectiveService {
   async getAnswers(objective) {
     // debugger
     const res = await api.get('api/objectives/' + objective.id + '/answers')
-    // debugger
+    debugger
 
     const filt = await res.data.filter(answer => answer.creatorId === AppState.account.id)
     if (filt.length > 0) {

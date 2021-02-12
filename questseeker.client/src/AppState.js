@@ -9,9 +9,11 @@ export const AppState = reactive({
   objectives: [],
   activeObjective: {},
   quests: [],
-  status: false,
+  status: Boolean,
   activeQuest: {},
   answers: [],
   markers: [],
-  teams: {}
+  teams: {},
+  markerInfo: [],
+  passingObject: {}
 })

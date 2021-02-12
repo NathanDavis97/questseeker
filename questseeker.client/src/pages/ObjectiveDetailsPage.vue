@@ -15,7 +15,7 @@
             </p>
           </div>
         </div>
-        <div class="row justify-content-center my-4" v-if="state.status == false">
+        <div class="row justify-content-center my-4" v-if="state.status === false">
           <form class="form-inline" @submit.prevent="submitAnswer">
             <div class="form-group mx-sm-3 mb-2 my-4">
               <input type="text"
@@ -31,7 +31,7 @@
             </button>
           </form>
         </div>
-        <div class="row" v-if="state.status == true">
+        <div class="row" v-if="state.status === true">
           <div class="col">
             <p>Already submitted</p>
           </div>
