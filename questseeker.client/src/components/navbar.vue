@@ -8,6 +8,7 @@
           height="45"
         />
       </div>
+      <span class="mt-2 ml-2">QuestSeeker</span>
     </router-link>
     <button
       class="navbar-toggler"
