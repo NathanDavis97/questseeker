@@ -9,7 +9,7 @@ export const AppState = reactive({
   objectives: [],
   activeObjective: {},
   quests: [],
-  status: Boolean,
+  status: false,
   activeQuest: {},
   answers: [],
   markers: [],

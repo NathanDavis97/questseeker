@@ -25,10 +25,10 @@ export default {
       markers: computed(() => AppState.markerInfo)
     })
     onMounted(async() => {
-      try {
-      } catch (error) {
-        logger.error(error)
-      }
+      // try {
+      // } catch (error) {
+      //   logger.error(error)
+      // }
     })
 
     return {

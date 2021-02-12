@@ -15,7 +15,7 @@
             </p>
           </div>
         </div>
-        <div class="row justify-content-center my-4" v-if="state.status === false">
+        <div class="row justify-content-center my-4">
           <form class="form-inline" @submit.prevent="submitAnswer">
             <div class="form-group mx-sm-3 mb-2 my-4">
               <input type="text"
@@ -31,7 +31,7 @@
             </button>
           </form>
         </div>
-        <div class="row" v-if="state.status === true">
+        <div class="row">
           <div class="col">
             <p>Already submitted</p>
           </div>
@@ -55,15 +55,15 @@ export default {
     const state = reactive({
       objectiveId: { id: route.params.id },
       objective: computed(() => AppState.activeObjective),
-      // FIXME make onloaded ffrom instaham. need to wait for the response.
       status: computed(() => AppState.status),
+      account: computed(() => AppState.account),
       answer: { isSubmitted: true, objectiveId: route.params.id, questId: route.params.questid }
     })
     onMounted(async() => {
       try {
         await objectiveService.getObjective(state.objectiveId)
         // TODO await the login before this fires off
-        await objectiveService.getAnswers(state.objectiveId)
+        // await objectiveService.getAnswers(state.objectiveId)
       } catch {
       }
     })
@@ -71,15 +71,14 @@ export default {
       state,
       async submitAnswer() {
         try {
-          await objectiveService.submitAnswer(state.answer)
+          await objectiveService.submitAnswer(state.answer, state.account)
           state.answer = { isSubmitted: true, objectiveId: route.params.id }
         } catch (error) {
           logger.error(error)
         }
       }
     }
-  },
-  components: {}
+  }
 }
 </script>
 

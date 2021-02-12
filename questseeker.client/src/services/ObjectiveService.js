@@ -18,20 +18,33 @@ class ObjectiveService {
     AppState.activeObjective = res.data
   }
 
-  async submitAnswer(answer) {
+  async submitAnswer(answer, account) {
     // TODO do a check to see if answer has already been submitted by this user.
-    await api.post('api/answers', answer)
-    AppState.status = true
-    router.push({ name: 'MapPage', params: answer.questId })
-    logger.log(answer)
+    // logger.log(account, 'this should be account obj')
+    const res = await api.get('api/objectives/' + answer.objectiveId + '/answers')
+
+    const array = res.data
+    // debugger
+    const filt = array.filter(answer => answer.creatorId === account._id)
+    // logger.log('this should be the account id we check', AppState.account)
+    if (filt.length < 1) {
+      await api.post('api/answers', answer)
+      // AppState.status = true
+      router.push({ name: 'MapPage', params: answer.questId })
+      logger.log(answer)
+    } else {
+      window.alert('You have already submitted an answer')
+      router.push({ name: 'MapPage', params: answer.questId })
+    }
   }
 
   async getAnswers(objective) {
-    // debugger
-    const res = await api.get('api/objectives/' + objective.id + '/answers')
     debugger
+    const res = await api.get('api/objectives/' + objective.id + '/answers')
 
-    const filt = await res.data.filter(answer => answer.creatorId === AppState.account.id)
+    const answers = res.data
+    const filt = answers.filter(answer => answer.creatorId === AppState.account)
+    logger.log('this should be the account id we check', AppState.account)
     if (filt.length > 0) {
       AppState.status = true
     } else {
