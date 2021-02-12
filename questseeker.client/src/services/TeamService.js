@@ -11,10 +11,14 @@ class TeamService {
     }
   }
 
-  async getAnswers(accountId, questId) {
+  async getAnswers(thisUser, objectId) {
     try {
-      const res = await api.get('api/answers/' + accountId).filter(questId)
-      AppState.answers = res.data
+      debugger
+      const res = await api.get('api/answers/' + thisUser)
+      const filt = res.data.filter(ob => ob.objectiveId === objectId)
+
+      AppState.answers = filt
+      return filt
     } catch (error) {
       logger.error(error)
     }

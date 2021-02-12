@@ -1,19 +1,18 @@
 <template>
   <div class="AnswersPage container-fluid">
-    <div class="row justify-content-center">
-      <div class="col text-center">
-        <h1>{{}}</h1>
-      </div>
-    </div>
+    <ObAnComponent v-for="objective in state.objectives"
+                   :key="objective.id"
+                   :objects-prop="objective"
+                   :user-prop="state.thisUser"
+    />
   </div>
 </template>
 
 <script>
 import { computed, reactive, onMounted } from 'vue'
 import { AppState } from '../AppState'
-import { teamService } from '../services/TeamService'
-import { useRoute } from 'vue-router'
 import { logger } from '../utils/Logger'
+import { useRoute } from 'vue-router'
 
 export default {
   name: 'AnswersPage',
@@ -22,13 +21,13 @@ export default {
     const state = reactive({
       answers: computed(() => AppState.answers),
       account: computed(() => AppState.account),
-      user: computed(() => AppState.user),
-      activeQuest: computed(() => AppState.activeQuest)
+      objectives: computed(() => AppState.objectives),
+      activeQuest: computed(() => AppState.activeQuest),
+      thisUser: route.params.id
     })
     onMounted(async() => {
-      // get objectives to render answers to those objectives
       try {
-        await teamService.getAnswers(route.params.id)
+        logger.log(state.activeQuest, 'getting activequest')
       } catch (error) {
         logger.error(error)
       }
