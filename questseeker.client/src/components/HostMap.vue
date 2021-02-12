@@ -10,7 +10,7 @@ export default {
   name: 'HostMap',
   props: {
     center: { lat: Number, lng: Number },
-    default: { lat: 43.6150, lng: -116.2023, title: 'Egyptian Theatre' },
+    default: { lat: 43.6063, lng: -116.2861, title: 'Codeworks' },
     zoom: Number,
     mapType: String,
     disableUI: Boolean,
@@ -50,6 +50,15 @@ export default {
         loadMapMarkers()
       }
     )
+
+    const fitMapBounds = () => {
+      const bounds = new window.google.maps.LatLngBounds()
+      props.markers.forEach((m) => {
+        bounds.extend(new window.google.maps.LatLng(m.lat, m.lng))
+      })
+      map.value.fitBounds(bounds)
+    }
+
     const clearMarkers = () => {
       currentMarkers.forEach(m => {
         m.map = null
@@ -73,6 +82,9 @@ export default {
         // mapmarkers = [...AppState.markers, mapMarker]
         currentMarkers.push(mapMarker)
       })
+      if (currentMarkers.length > 1) {
+        fitMapBounds()
+      }
       return AppState.markers
     }
 

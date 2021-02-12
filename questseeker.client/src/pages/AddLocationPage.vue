@@ -49,7 +49,7 @@
     <div class="MapSection mapSection row mx-3" id="AddLocationMap">
       <div class="col">
         <HostMap :disable-u-i="false"
-                 :zoom="15"
+                 :zoom="10"
                  map-type="roadmap"
                  :center="{ lat: 43.6150, lng: -116.2023 }"
                  :markers="state.markers"

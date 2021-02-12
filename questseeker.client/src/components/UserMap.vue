@@ -85,6 +85,7 @@ export default {
                 mapMarker.infoWindow.open(map.value, mapMarker)
               }
             })
+
             // navigator.geolocation.getCurrentPosition((p) => getDistance(p))
             logger.log('this is after get distance funct', state.userLocation)
             // debugger
@@ -132,6 +133,14 @@ export default {
       logger.log('This is the state object', state.userLocation)
     }
 
+    const fitMapBounds = () => {
+      const bounds = new window.google.maps.LatLngBounds()
+      props.markers.forEach((m) => {
+        bounds.extend(new window.google.maps.LatLng(m.lat, m.lng))
+      })
+      map.value.fitBounds(bounds)
+    }
+
     window.initMap = () => {
       map.value = new window.google.maps.Map(mapDivRef.value, {
         mapTypeId: props.mapType || 'hybrid',
@@ -141,6 +150,7 @@ export default {
 
       })
       loadMapMarkers()
+      fitMapBounds()
     }
     return {
       mapDivRef,

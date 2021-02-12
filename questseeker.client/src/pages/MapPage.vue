@@ -24,15 +24,6 @@ export default {
     const state = reactive({
       markers: computed(() => AppState.markerInfo)
     })
-<<<<<<< HEAD
-    onMounted(async() => {
-      // try {
-      // } catch (error) {
-      //   logger.error(error)
-      // }
-    })
-=======
->>>>>>> 2c637766301fd7611631145cdb89f56bcff1409f
 
     return {
       state
