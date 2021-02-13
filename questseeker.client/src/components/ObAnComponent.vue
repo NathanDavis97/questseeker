@@ -4,22 +4,31 @@
       <div class="col m-2">
         <div class="card text-center">
           <div class="card-header">
-            <h3><strong>{{ objectsProp.title }}</strong></h3>
+            <h1><strong>{{ objectsProp.title }}</strong></h1>
+            <h4><i>"{{ objectsProp.body }}"</i></h4>
             <p>{{ objectsProp.location.address }}</p>
           </div>
           <div class="card-body" v-if="state.thisAnswer.body">
-            <h4><strong> {{ state.thisAnswer.body }}</strong></h4>
+            <h4><strong>{{ state.thisAnswer.body }} </strong> </h4>
           </div>
-          <div>
-            <p>{{ state.thisAnswer.isCorrect ? "Correct" : "Incorrect" }}</p>
+          <div class="m-4" v-if="state.thisAnswer.isCorrect == true">
+            <p>CORRECT</p>
           </div>
-          <div class="card-footer" v-if="state.thisAnswer.isCorrect !== true || false ">
-            <button class="btn btn-outline-primary" @click="gradeCorrect()">
-              Correct
-            </button>
-            <button class="btn btn-outline-danger" @click="gradeWrong()">
-              Wrong
-            </button>
+          <div class="m-4" v-if="state.thisAnswer.isCorrect == false">
+            <p>INCORRECT</p>
+          </div>
+          <div class="m-4" v-if="state.thisAnswer.isCorrect == null">
+            <p>Has not been reviewed...</p>
+          </div>
+          <div v-if="state.thisAnswer.isSubmitted">
+            <div class="card-footer" v-if="state.thisAnswer.isCorrect !== true || false ">
+              <button class="btn btn-outline-primary" @click="gradeCorrect()">
+                Correct
+              </button>
+              <button class="btn btn-outline-danger" @click="gradeWrong()">
+                Wrong
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -62,9 +71,11 @@ export default {
 
       async gradeCorrect() {
         state.thisAnswer = await teamService.gradeCorrect(state.thisAnswer.id, state.userId, state.objective)
+        state.thisAnswer.isCorrect = true
       },
       async gradeWrong() {
         state.thisAnswer = await teamService.gradeIncorrect(state.thisAnswer.id, state.userId, state.objective)
+        state.thisAnswer.isCorrect = false
       }
     }
   }
@@ -73,7 +84,7 @@ export default {
 
 <style lang="scss" scoped>
 .card{
-  font-family: 'Montserrat Alternative';;
+  font-family: 'Montserrat Alternates';
   box-shadow: 0px 3px 8px black;
 }
 </style>
