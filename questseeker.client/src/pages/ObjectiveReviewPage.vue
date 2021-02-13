@@ -1,5 +1,5 @@
 <template>
-  <div class="ObjectiveReviewPage container-fluid">
+  <div class="ObjectiveReviewPage container-fluid font">
     <ObjectiveComponent v-for="objective in state.objectives"
                         :key="objective.id"
                         :objective-prop="objective"
@@ -100,12 +100,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div{
-  font-family: 'Montserrat Alternative';
-}
 .activ{
   position: relative;
-  font-family: 'Montserrat Alternative';
+  font-family:'Montserrat Alternates', sans-serif;
   border: 2px solid #FAED26 ;
   color: #FAED26;
   background-color: #0A0732;
@@ -114,7 +111,7 @@ div{
 
 .not-active{
   position: relative;
-  font-family: 'Montserrat Alternative';
+  font-family: 'Montserrat Alternates', sans-serif;
   border: 2px solid #0A0732;
   color: #0A0732;
   box-shadow: 0px 3px 8px black;

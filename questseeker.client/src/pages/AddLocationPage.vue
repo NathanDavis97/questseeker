@@ -1,5 +1,5 @@
 <template>
-  <div class="AddLocationPage container-fluid">
+  <div class="AddLocationPage container-fluid font">
     <div class="AddLocationFormSection row">
       <div class="col d-flex justify-content-center">
         <form class="form-inline" @submit.prevent="createObjective">
@@ -60,9 +60,6 @@
     </div>
     <div class="row">
       <div class="col d-flex justify-content-end my-5">
-        <button class="btn btn-primary">
-          Use Current Location
-        </button>
         <!-- FIXME remove router links here Just for basic navigation for now-->
         <router-link :to="{ name: 'ObjectiveReviewPage', params: {questid: state.questId}}">
           <button class="btn btn-primary">
@@ -152,5 +149,8 @@ export default {
 <style lang="scss" scoped>
 .mapSection{
   min-height: 40vh;
+}
+.font{
+  font-family: 'Montserrat Alternates', sans-serif
 }
 </style>

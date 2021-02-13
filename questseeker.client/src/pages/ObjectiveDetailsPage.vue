@@ -1,5 +1,5 @@
 <template>
-  <div class="ObjectiveDetailsPage container-fluid bg">
+  <div class="ObjectiveDetailsPage container-fluid bg font">
     <div class="row">
       <div class="col text-center m-2">
         <h2>{{ state.objective.title }}</h2>
@@ -33,7 +33,6 @@
         </div>
         <div class="row">
           <div class="col">
-            <p>Already submitted</p>
           </div>
         </div>
       </div>
@@ -83,5 +82,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.font{
+  font-family: 'Montserrat Alternates', sans-serif
+}
 </style>

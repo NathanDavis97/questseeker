@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark font">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img
@@ -127,5 +127,8 @@ a:hover {
 }
 .navbar{
   background-color: #000037 !important;
+}
+.font{
+  font-family: 'Montserrat Alternates', sans-serif
 }
 </style>
