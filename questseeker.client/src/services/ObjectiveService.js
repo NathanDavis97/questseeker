@@ -53,8 +53,30 @@ class ObjectiveService {
   }
 
   async getMarkers(questId) {
+    // debugger
     const res = await api.get('api/quests/' + questId + '/objectives')
-    res.data = AppState.markerInfo
+    logger.log('this is the objectives/markers', res.data)
+    AppState.markers = res.data
+    this.formatMarkerInfo()
+  }
+
+  formatMarkerInfo() {
+    AppState.markers.forEach(marker => {
+      // debugger
+      const passingObject = {}
+      passingObject.lat = marker.location.lat
+      passingObject.lng = marker.location.lng
+      passingObject.address = marker.location.address
+      passingObject.title = marker.title
+      passingObject.objectiveId = marker.id
+      AppState.markerInfo.push(passingObject)
+      // state.passingObject = {}
+
+      // TODO get title later???
+      // state.markerInfo.push(marker.title)
+      logger.log('this is the formatted', AppState.markerInfo)
+    })
+    return AppState.markerInfo
   }
 }
 export const objectiveService = new ObjectiveService()

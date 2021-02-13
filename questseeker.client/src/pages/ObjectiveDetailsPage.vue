@@ -6,35 +6,34 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-6">
-        <div class="card mt-1 text-left">
-          <img class="card-img-top" src="holder.js/100px180/" alt="">
+      <div class="col">
+        <div class="card mt-1 text-left custom">
           <div class="card-body">
             <p class="card-text">
               {{ state.objective.body }}
             </p>
           </div>
         </div>
-        <div class="row justify-content-center my-4">
-          <form class="form-inline" @submit.prevent="submitAnswer">
-            <div class="form-group mx-sm-3 mb-2 my-4">
-              <input type="text"
-                     class="form-control"
-                     id="inputPassword2"
-                     v-model="state.answer.body"
-                     placeholder="submit Answer"
-              >
-            </div>
-            <!-- Button trigger modal -->
-            <button type="submit" class="btn btn-primary mb-2 my-4" data-toggle="modal" data-target="#ObjectiveCreationModal">
-              Send Answer
-            </button>
-          </form>
+      </div>
+    </div>
+    <div class="row justify-content-center my-4">
+      <form class="form-inline" @submit.prevent="submitAnswer">
+        <div class="form-group mx-sm-3 mb-2 my-4">
+          <input type="text"
+                 class="form-control"
+                 id="inputPassword2"
+                 v-model="state.answer.body"
+                 placeholder="submit Answer"
+          >
         </div>
-        <div class="row">
-          <div class="col">
-          </div>
-        </div>
+        <!-- Button trigger modal -->
+        <button type="submit" class="btn btn-primary mb-2 my-4" data-toggle="modal" data-target="#ObjectiveCreationModal">
+          Send Answer
+        </button>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col">
       </div>
     </div>
   </div>
@@ -84,5 +83,8 @@ export default {
 <style lang="scss" scoped>
 .font{
   font-family: 'Montserrat Alternates', sans-serif
+}
+.custom{
+  width: 21rem;
 }
 </style>

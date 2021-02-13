@@ -31,6 +31,7 @@ export default {
     // FIXME this doesn't work yet
     onMounted(async() => {
       try {
+        // debugger
         objectiveService.getMarkers(route.params.questid)
       } catch (error) {
         logger.error(error)

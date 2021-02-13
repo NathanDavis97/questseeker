@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { ref, onMounted, reactive } from 'vue'
+import { ref, onMounted, reactive, watch } from 'vue'
 import { logger } from '../utils/Logger'
 // import { locationService } from '../services/LocationService'
 import router from '../router'
@@ -28,6 +28,7 @@ export default {
     // the map element in the templste
     const mapDivRef = ref(null)
     const route = useRoute()
+    let currentMarkers = []
     const state = reactive({
       userLocation: {}
       // markers: computed(() => AppState.objectives)
@@ -35,7 +36,7 @@ export default {
     // load in the google script
     onMounted(() => {
       // key is is the .env file
-
+      loadMapMarkers()
       // create the script element to load
       const googleMapScript = document.createElement('SCRIPT')
       googleMapScript.setAttribute(
@@ -47,6 +48,20 @@ export default {
       document.head.appendChild(googleMapScript)
     })
 
+    watch(
+      () => props.markers,
+      () => {
+        loadMapMarkers()
+      }
+    )
+
+    const clearMarkers = () => {
+      currentMarkers.forEach(m => {
+        m.map = null
+      })
+      currentMarkers = []
+    }
+
     /**
      * this function is called as soon as the map is initialized
      */
@@ -54,6 +69,7 @@ export default {
     const loadMapMarkers = async() => {
       // removed .length for now
       if (!props.markers.length) return
+      clearMarkers()
       props.markers.forEach(markerInfo => {
         const mapMarker = new window.google.maps.Marker({
           position: new window.google.maps.LatLng(markerInfo.lat, markerInfo.lng),
@@ -61,6 +77,7 @@ export default {
           title: markerInfo.title
           // store_id: markerInfo.id
         })
+        currentMarkers.push(mapMarker)
 
         mapMarker.infoWindow = new window.google.maps.InfoWindow({
           content: markerInfo.title
@@ -152,6 +169,7 @@ export default {
       loadMapMarkers()
       fitMapBounds()
     }
+
     return {
       mapDivRef,
       state
