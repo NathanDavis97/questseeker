@@ -154,7 +154,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .home{
       .customBtn {
         margin-top: 12rem;
