@@ -20,7 +20,7 @@ class AnswersService {
   }
 
   async update(update, req) {
-    return await dbContext.Answers.findOneAndUpdate({ _id: update.id, creatorId: req.userInfo.id }, update, { new: true }).populate('creator')
+    return await dbContext.Answers.findOneAndUpdate({ _id: update.id }, update, { new: true }).populate('creator')
   }
 }
 export const answersService = new AnswersService()
