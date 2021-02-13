@@ -126,6 +126,6 @@ a:hover {
   color:#FAED26;
 }
 .navbar{
-  background-color: #2D4473 !important;
+  background-color: #000037 !important;
 }
 </style>

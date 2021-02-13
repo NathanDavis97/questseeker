@@ -31,7 +31,7 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 .foot-bg{
-  background-color: #2D4473 !important;
+  background-color: #000037 !important;
   font-family: 'Montserrat Alternative';
 }
 </style>
