@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark font">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img
@@ -8,6 +8,7 @@
           height="45"
         />
       </div>
+      <span class="mt-2 ml-2">QuestSeeker</span>
     </router-link>
     <button
       class="navbar-toggler"
@@ -125,6 +126,9 @@ a:hover {
   color:#FAED26;
 }
 .navbar{
-  background-color: #2D4473 !important;
+  background-color: #000037 !important;
+}
+.font{
+  font-family: 'Montserrat Alternates', sans-serif
 }
 </style>

@@ -79,12 +79,13 @@ export default {
               logger.log(p)
               logger.log(state.userLocation)
               // debugger
-              if (state.userLocation.latitude <= objectiveLocation.lat + 0.1 && state.userLocation.latitude >= objectiveLocation.lat - 0.1 && state.userLocation.longitude <= objectiveLocation.lng + 0.1 && state.userLocation.longitude >= objectiveLocation.lng - 0.1) {
+              if (state.userLocation.latitude <= objectiveLocation.lat + 0.01 && state.userLocation.latitude >= objectiveLocation.lat - 0.01 && state.userLocation.longitude <= objectiveLocation.lng + 0.01 && state.userLocation.longitude >= objectiveLocation.lng - 0.01) {
                 router.push({ name: 'ObjectiveDetails', params: { questid: route.params.questid, id: objectiveLocation.id } })
               } else {
                 mapMarker.infoWindow.open(map.value, mapMarker)
               }
             })
+
             // navigator.geolocation.getCurrentPosition((p) => getDistance(p))
             logger.log('this is after get distance funct', state.userLocation)
             // debugger
@@ -132,6 +133,14 @@ export default {
       logger.log('This is the state object', state.userLocation)
     }
 
+    const fitMapBounds = () => {
+      const bounds = new window.google.maps.LatLngBounds()
+      props.markers.forEach((m) => {
+        bounds.extend(new window.google.maps.LatLng(m.lat, m.lng))
+      })
+      map.value.fitBounds(bounds)
+    }
+
     window.initMap = () => {
       map.value = new window.google.maps.Map(mapDivRef.value, {
         mapTypeId: props.mapType || 'hybrid',
@@ -141,6 +150,7 @@ export default {
 
       })
       loadMapMarkers()
+      fitMapBounds()
     }
     return {
       mapDivRef,

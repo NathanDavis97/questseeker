@@ -1,5 +1,5 @@
 <template>
-  <div class="ObjectiveComponent">
+  <div class="ObjectiveComponent font">
     <div class="row justify-content-center">
       <div class="col-8 m-2">
         <div class="card text-center">
@@ -26,7 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 .card{
-  font-family: 'Montserrat Alternative';;
+   font-family: 'Montserrat Alternates', sans-serif;
   box-shadow: 0px 3px 8px black;
 }
 </style>

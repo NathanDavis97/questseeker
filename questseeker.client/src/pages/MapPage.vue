@@ -15,16 +15,27 @@
 </template>
 
 <script>
-import { computed, reactive } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
+import { objectiveService } from '../services/ObjectiveService'
+import { logger } from '../utils/Logger'
+import { useRoute } from 'vue-router'
 // import { logger } from '../utils/Logger'
 export default {
   name: 'MapPage',
   setup() {
+    const route = useRoute()
     const state = reactive({
       markers: computed(() => AppState.markerInfo)
     })
-
+    // FIXME this doesn't work yet
+    onMounted(async() => {
+      try {
+        objectiveService.getMarkers(route.params.questid)
+      } catch (error) {
+        logger.error(error)
+      }
+    })
     return {
       state
       // function that goes over state.markers. for each marker strips off and takes the title and location. Then push into state.markerInfo.

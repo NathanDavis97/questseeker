@@ -1,10 +1,10 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
+  <div class="container-fluid background">
+    <div class="row ">
       <!-- FIXME adjust the positioning. -->
       <div class="col home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
         <!-- Button trigger modal -->
-        <button class="my-5 bg-dark text-light p-3 rounded d-flex align-items-center btn btn-outline" data-toggle="modal" data-target="#CreateTitleModal">
+        <button class="customBtn text-light p-3 rounded d-flex align-items-center btn btn-outline" data-toggle="modal" data-target="#CreateTitleModal">
           Create Quest
         </button>
 
@@ -19,7 +19,7 @@
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">
+                <h5 class="modal-title text-dark" id="exampleModalLongTitle">
                   Forge a Quest
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -54,7 +54,7 @@
     <div class="row">
       <div class="col home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
         <!-- Button trigger modal -->
-        <button class="my-5 bg-dark text-light p-3 rounded d-flex align-items-center btn btn-outline" data-toggle="modal" data-target="#JoinQuestModal">
+        <button class=" customBtn text-light p-3 rounded d-flex align-items-center btn btn-outline" data-toggle="modal" data-target="#JoinQuestModal">
           Join Quest
         </button>
         <!-- Modal -->
@@ -68,7 +68,7 @@
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">
+                <h5 class="modal-title text-dark" id="exampleModalLongTitle">
                   Join a Quest
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -156,11 +156,26 @@ export default {
 
 <style scoped lang="scss">
 .home{
-  text-align: center;
-  user-select: none;
-  > img{
-    height: 200px;
-    width: 200px;
-  }
+      .customBtn {
+        margin-top: 12rem;
+            cursor: pointer;
+            border: 2px solid #cdd7dd;
+            background-color: transparent;
+            height: 50px;
+            width: 200px;
+            font-size: 1.5em;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            font-family: 'Montserrat Alternates', sans-serif
+        }
 }
+        .background {
+  width: 100wh;
+height: 90vh;
+color: #fff;
+background: linear-gradient(-45deg, #E73C7E, #23A6D5, #23D5AB);
+background-size: 200% 200%;
+
+}
+
 </style>
