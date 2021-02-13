@@ -137,6 +137,8 @@ export default {
           await hostMapService.createObjective(state.objective, route.params.questid)
           AppState.currentLocation = {}
           $('#ObjectiveCreationModal').modal('hide')
+          state.location = {}
+          state.objective = {}
         } catch (error) {
           logger.error(error)
         }

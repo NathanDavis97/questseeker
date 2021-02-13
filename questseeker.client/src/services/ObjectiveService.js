@@ -51,5 +51,10 @@ class ObjectiveService {
       AppState.status = false
     }
   }
+
+  async getMarkers(questId) {
+    const res = await api.get('api/quests/' + questId + '/objectives')
+    res.data = AppState.markerInfo
+  }
 }
 export const objectiveService = new ObjectiveService()
