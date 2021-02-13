@@ -13,15 +13,30 @@ class TeamService {
 
   async getAnswers(thisUser, objectId) {
     try {
-      debugger
       const res = await api.get('api/answers/' + thisUser)
       const filt = res.data.filter(ob => ob.objectiveId === objectId)
-
-      AppState.answers = filt
+      logger.log(res.data)
+      AppState.answers = res.data
       return filt
     } catch (error) {
       logger.error(error)
     }
+  }
+
+  async gradeCorrect(id, thisUser, objectId) {
+    const update = { isCorrect: true }
+    const res = await api.put('api/answers/' + id, update)
+    logger.log(res, 'hello from grading')
+    const currentAnswer = await this.getAnswers(thisUser, objectId)
+    return currentAnswer
+  }
+
+  async gradeIncorrect(id, thisUser, objectId) {
+    const update = { isCorrect: false }
+    const res = await api.put('api/answers/' + id, update)
+    logger.log(res, 'hello from grading')
+    const currentAnswer2 = await this.getAnswers(thisUser, objectId)
+    return currentAnswer2
   }
 }
 

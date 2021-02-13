@@ -46,7 +46,7 @@ export class AnswersController extends BaseController {
   async edit(req, res, next) {
     try {
       req.body.id = req.params.id
-      req.body.creatorId = req.userInfo.id
+      // req.body.creatorId = req.userInfo.id
       const data = await answersService.update(req.body, req)
       res.send(data)
     } catch (error) {
