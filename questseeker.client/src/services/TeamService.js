@@ -24,7 +24,6 @@ class TeamService {
   }
 
   async gradeCorrect(id, thisUser, objectId) {
-    debugger
     const update = { isCorrect: true }
     const res = await api.put('api/answers/' + id, update)
     logger.log(res, 'hello from grading')
@@ -32,7 +31,7 @@ class TeamService {
     return currentAnswer
   }
 
-  async gradeIncorrect(id, thisUser, objectId) {
+ gradeIncorrect(id, thisUser, objectId) {
     const update = { isCorrect: false }
     const res = await api.put('api/answers/' + id, update)
     logger.log(res, 'hello from grading')
