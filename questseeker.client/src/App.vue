@@ -10,8 +10,8 @@
     </router-view>
   </main>
   <footer>
-    <div class="bg-dark text-light text-center p-4">
-      Made with 💖 by CodeWorks
+    <div class="foot-bg text-light text-center p-4">
+      Developers: Justin, Nathan, Steffen, Kris
     </div>
   </footer>
 </template>
@@ -30,5 +30,8 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
-
+.foot-bg{
+  background-color: #000037 !important;
+   font-family: 'Montserrat Alternates', sans-serif;
+}
 </style>

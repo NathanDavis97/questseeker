@@ -1,13 +1,14 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark font">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"
-          src="../assets/img/cw-logo.png"
+          src="../assets/img/QUESTSEEKER.png"
           height="45"
         />
       </div>
+      <span class="mt-2 ml-2">QuestSeeker</span>
     </router-link>
     <button
       class="navbar-toggler"
@@ -122,6 +123,12 @@ a:hover {
   text-transform: uppercase;
 }
 .nav-item .nav-link.router-link-exact-active{
-  color: var(--primary);
+  color:#FAED26;
+}
+.navbar{
+  background-color: #000037 !important;
+}
+.font{
+  font-family: 'Montserrat Alternates', sans-serif
 }
 </style>
