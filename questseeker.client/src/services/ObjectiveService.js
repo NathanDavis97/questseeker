@@ -39,7 +39,7 @@ class ObjectiveService {
   }
 
   async getAnswers(objective) {
-    debugger
+    // debugger
     const res = await api.get('api/objectives/' + objective.id + '/answers')
 
     const answers = res.data
