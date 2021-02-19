@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --open",
-    "build": "vue-cli-service build",
+    "start": "node questseeker.server/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
