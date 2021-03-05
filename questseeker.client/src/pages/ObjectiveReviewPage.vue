@@ -5,7 +5,7 @@
                         :objective-prop="objective"
     />
     <div>
-      <div class="row justify-content-around">
+      <div class="row justify-content-around mt-3">
         <button class="btn activ m-1" v-if="state.activeQuest.isJoinable === true" @click="questJoinable">
           <small>
             Give the Code</small>
@@ -36,12 +36,11 @@
       <div class="row justify-content-center">
         <div class="col m-4 text-center">
           <button class="btn btn-outline-primary ca shadow" v-if="state.activeQuest.isJoinable === true && state.activeQuest.isActive === true">
-            <small>
-              <router-link class="current-answers text-white" :to="{name: 'TeamsPage', params: {questid: state.questId}}">
-                current
-                answers
-              </router-link>
-            </small>
+            <router-link class="current-answers text-white" :to="{name: 'TeamsPage', params: {questid: state.questId}}">
+              <div>
+                Current Answers
+              </div>
+            </router-link>
           </button>
         </div>
       </div>
@@ -122,7 +121,7 @@ export default {
 }
 .current-answers{
   border-radius: 2%;
-  padding: 15px 20px;
+  // padding: 15px 20px;
   font-family: 'Montserrat Alternates', sans-serif;
 }
 .ac-code{

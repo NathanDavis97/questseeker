@@ -8,8 +8,8 @@
     <div class="row justify-content-center">
       <div class="col">
         <div class=" mt-1 text-left custom ">
-          <div class="">
-            <h4 class="">
+          <div class="card opac">
+            <h4 class="card-body opac">
               {{ state.objective.body }}
             </h4>
           </div>
@@ -89,5 +89,9 @@ export default {
 }
 .backdrop{
   background-color: rgba(20, 20, 20, 0.062);
+}
+.opac{
+background-color: rgba(240, 248, 255, 0);
+border: none;
 }
 </style>
