@@ -164,15 +164,13 @@ export default {
   border: 8;
   border-color: black;
 }
-<<<<<<< HEAD
 .create-button{
    border: 2px solid #0A0732;
   background-color: rgba(184, 183, 183, 0.183);
   color: #0A0732;
   font-family: 'Montserrat Alternates', sans-serif
-=======
+}
 .backdrop{
   background-color: rgba(20, 20, 20, 0.062);
->>>>>>> 63acfbcd6e3e0ed13bed6550460790f5a7e6275c
 }
 </style>
