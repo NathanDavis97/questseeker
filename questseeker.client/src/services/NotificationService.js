@@ -22,6 +22,20 @@ export default class NotificationService {
     }
   }
 
+  static async alert() {
+    const res = await Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Something went wrong, please provide a valid address!',
+      footer: '<a href class="text-dark">Why do I have this issue?</a>'
+    })
+    if (res.isConfirmed) {
+      console.log(res.isConfirmed)
+      return true
+    }
+    return false
+  }
+
   static toast(title = 'Default Toasty', display = 'success') {
     // @ts-ignore
     Swal.fire({

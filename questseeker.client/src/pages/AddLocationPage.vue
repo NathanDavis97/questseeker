@@ -7,8 +7,8 @@
             <input type="text" class="form-control" v-model="state.location.value" id="inputPassword2" placeholder="Add Location">
           </div>
           <!-- Button trigger modal -->
-          <button type="button" @click="findLocation" class="btn btn-primary mb-2 my-4" data-toggle="modal" data-target="#ObjectiveCreationModal">
-            +
+          <button type="button" @click="findLocation" class="btn btn-outline-primary mb-2 my-4 text-white backdrop" data-toggle="modal" data-target="#ObjectiveCreationModal">
+            <i class="fas fa-plus"></i>
           </button>
 
           <!-- Modal -->
@@ -62,7 +62,7 @@
       <div class="col d-flex justify-content-end my-5">
         <!-- FIXME remove router links here Just for basic navigation for now-->
         <router-link :to="{ name: 'ObjectiveReviewPage', params: {questid: state.questId}}">
-          <button class="btn btn-outline btn-primary rounded-pill border">
+          <button class="btn btn-outline-primary mb-2 my-4 text-white backdrop rounded-pill">
             Review Objectives
           </button>
         </router-link>
@@ -78,6 +78,7 @@ import { AppState } from '../AppState'
 import { hostMapService } from '../services/HostMapService'
 import $ from 'jquery'
 import { useRoute } from 'vue-router'
+import NotificationService from '../services/NotificationService'
 export default {
   name: 'AddLocationPage',
   setup() {
@@ -90,6 +91,9 @@ export default {
       questId: route.params.questid
 
     })
+    const closeModal = () => {
+      $('#ObjectiveCreationModal').modal('hide')
+    }
     let geoCoderService = null
     const addLocation = (location) => {
       state.markers = [...state.markers, {
@@ -104,9 +108,12 @@ export default {
     }
     const findLocation = () => {
       geoCoderService.geocode({ address: state.location.value },
-        (results, status) => {
+        async(results, status) => {
           if (status !== 'OK') {
-            window.alert('No Result')
+            // debugger
+            if (await NotificationService.alert()) {
+              closeModal()
+            }
           } else {
             logger.log(results)
             state.result = {
@@ -157,10 +164,15 @@ export default {
   border: 8;
   border-color: black;
 }
+<<<<<<< HEAD
 .create-button{
    border: 2px solid #0A0732;
   background-color: rgba(184, 183, 183, 0.183);
   color: #0A0732;
   font-family: 'Montserrat Alternates', sans-serif
+=======
+.backdrop{
+  background-color: rgba(20, 20, 20, 0.062);
+>>>>>>> 63acfbcd6e3e0ed13bed6550460790f5a7e6275c
 }
 </style>
