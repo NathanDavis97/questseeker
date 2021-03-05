@@ -5,7 +5,7 @@
                         :objective-prop="objective"
     />
     <div>
-      <div class="row justify-content-around">
+      <div class="row justify-content-around mt-3">
         <button class="btn activ m-1" v-if="state.activeQuest.isJoinable === true" @click="questJoinable">
           <small>
             Give the Code</small>
@@ -28,20 +28,19 @@
           <p class="m-2">
             Access Code:
           </p>
-          <div class="card bottom-c">
+          <div class="card bottom-c ac-code shadow">
             <h1>{{ state.activeQuest.accessCode }}</h1>
           </div>
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-6 m-4 text-center">
-          <button class="btn btn-outline-danger" v-if="state.activeQuest.isJoinable === true && state.activeQuest.isActive === true">
-            <small>
-              <router-link :to="{name: 'TeamsPage', params: {questid: state.questId}}">
-                current
-                answers
-              </router-link>
-            </small>
+        <div class="col m-4 text-center">
+          <button class="btn btn-outline-primary ca shadow" v-if="state.activeQuest.isJoinable === true && state.activeQuest.isActive === true">
+            <router-link class="current-answers text-white" :to="{name: 'TeamsPage', params: {questid: state.questId}}">
+              <div>
+                Current Answers
+              </div>
+            </router-link>
           </button>
         </div>
       </div>
@@ -103,10 +102,11 @@ export default {
 .activ{
   position: relative;
   font-family:'Montserrat Alternates', sans-serif;
+  font-style:italic;
   border: 2px solid #FAED26 ;
   color: #FAED26;
   background-color: #0A0732;
-  box-shadow: 0px 3px 8px black;
+  box-shadow: 1px 3px 10px rgb(80, 80, 80);
 }
 
 .not-active{
@@ -114,7 +114,18 @@ export default {
   font-family: 'Montserrat Alternates', sans-serif;
   border: 2px solid #0A0732;
   color: #0A0732;
-  box-shadow: 0px 3px 8px black;
+  box-shadow: 1px 3px 10px rgb(69, 69, 69);
+}
+.ca{
+  background-color: rgba(20, 20, 20, 0.062);
+}
+.current-answers{
+  border-radius: 2%;
+  // padding: 15px 20px;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+.ac-code{
+  background-color: rgba(249, 249, 249, 0.829);
 }
 
 </style>

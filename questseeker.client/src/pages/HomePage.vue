@@ -27,8 +27,8 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form type="submit" @submit.prevent="createQuest">
-                  <div class="form-group">
+                <form type="submit" class="justify-content-center" @submit.prevent="createQuest">
+                  <div class="form-group d-flex">
                     <label for=""></label>
                     <input type="text"
                            class="form-control"
@@ -39,12 +39,12 @@
                            placeholder="Quest Title"
                     >
                   </div>
-                  <button type="submit" class="btn btn-primary">
-                    Forge!
-                  </button>
+                  <div class="row justify-content-center">
+                    <button type="submit" class="btn forge rounded">
+                      Forge!
+                    </button>
+                  </div>
                 </form>
-              </div>
-              <div class="modal-footer">
               </div>
             </div>
           </div>
@@ -77,7 +77,7 @@
               </div>
               <div class="modal-body">
                 <form type="submit" @submit.prevent="joinQuest">
-                  <div class="form-group">
+                  <div class="form-group d-flex">
                     <label for=""></label>
                     <input type="text"
                            class="form-control"
@@ -88,12 +88,12 @@
                            placeholder="Quest Code"
                     >
                   </div>
-                  <button type="submit" class="btn btn-primary">
-                    Join!
-                  </button>
+                  <div class="row justify-content-center">
+                    <button type="submit" class="btn join rounded">
+                      Join!
+                    </button>
+                  </div>
                 </form>
-              </div>
-              <div class="modal-footer">
               </div>
             </div>
           </div>
@@ -176,6 +176,18 @@ color: #fff;
 background: linear-gradient(-45deg, #E73C7E, #23A6D5, #23D5AB);
 background-size: 200% 200%;
 
+}
+.join{
+  border: 2px solid #0A0732;
+  background-color: rgba(184, 183, 183, 0.183);
+  color: #0A0732;
+  font-family: 'Montserrat Alternates', sans-serif
+}
+.forge{
+  border: 2px solid #0A0732;
+  background-color: rgba(184, 183, 183, 0.183);
+  color: #0A0732;
+  font-family: 'Montserrat Alternates', sans-serif
 }
 
 </style>

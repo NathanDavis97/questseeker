@@ -1,8 +1,8 @@
 <template>
-  <div class="ObjectiveComponent font">
+  <div class="ObjectiveComponent font ">
     <div class="row justify-content-center">
       <div class="col-8 m-2">
-        <div class="card text-center">
+        <div class="card text-center backdrop">
           <h3><strong>{{ objectiveProp.title }}</strong></h3>
           <p>{{ objectiveProp.location.address }}</p>
         </div>
@@ -28,5 +28,8 @@ export default {
 .card{
    font-family: 'Montserrat Alternates', sans-serif;
   box-shadow: 0px 3px 8px black;
+}
+.backdrop{
+  background-color: rgba(249, 249, 249, 0.829);
 }
 </style>
