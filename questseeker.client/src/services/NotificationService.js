@@ -1,4 +1,5 @@
 import Swal from 'sweetalert2'
+import { logger } from '../utils/Logger'
 
 export default class NotificationService {
   static async confirmAction(title = 'Are you sure?', text = "You won't be able to revert this!") {
@@ -17,6 +18,7 @@ export default class NotificationService {
       }
       return false
     } catch (error) {
+      logger.log(error)
     }
   }
 
