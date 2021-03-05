@@ -35,7 +35,7 @@
       </div>
       <div class="row justify-content-center">
         <div class="col m-4 text-center">
-          <button class="btn btn-outline-primary" v-if="state.activeQuest.isJoinable === true && state.activeQuest.isActive === true">
+          <button class="btn btn-outline-primary ca shadow" v-if="state.activeQuest.isJoinable === true && state.activeQuest.isActive === true">
             <small>
               <router-link class="current-answers" :to="{name: 'TeamsPage', params: {questid: state.questId}}">
                 current
@@ -117,12 +117,13 @@ export default {
   color: #0A0732;
   box-shadow: 1px 3px 10px rgb(69, 69, 69);
 }
-
+.ca{
+  background-color: rgba(20, 20, 20, 0.062);
+}
 .current-answers{
   border-radius: 2%;
   padding: 15px 20px;
   font-family: 'Montserrat Alternates', sans-serif;
-
 }
 
 </style>
