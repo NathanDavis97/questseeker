@@ -7,7 +7,7 @@
             <input type="text" class="form-control" v-model="state.location.value" id="inputPassword2" placeholder="Add Location">
           </div>
           <!-- Button trigger modal -->
-          <button type="button" @click="findLocation" class="btn btn-outline-primary mb-2 my-4 text-white backdrop" data-toggle="modal" data-target="#ObjectiveCreationModal">
+          <button type="button" @click="findLocation" class="btn btn-outline-primary mb-2 my-4 text-primary backdrop" data-toggle="modal" data-target="#ObjectiveCreationModal">
             <i class="fas fa-plus"></i>
           </button>
 
