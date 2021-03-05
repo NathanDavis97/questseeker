@@ -62,7 +62,7 @@
       <div class="col d-flex justify-content-end my-5">
         <!-- FIXME remove router links here Just for basic navigation for now-->
         <router-link :to="{ name: 'ObjectiveReviewPage', params: {questid: state.questId}}">
-          <button class="btn btn-primary">
+          <button class="btn btn-outline btn-primary rounded-pill border">
             Review Objectives
           </button>
         </router-link>
@@ -152,5 +152,9 @@ export default {
 }
 .font{
   font-family: 'Montserrat Alternates', sans-serif
+}
+.border{
+  border: 8;
+  border-color: black;
 }
 </style>
