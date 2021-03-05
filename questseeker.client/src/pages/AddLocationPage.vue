@@ -34,11 +34,11 @@
                   <input type="text" class="form-control my-4" placeholder="Objective Description" v-model="state.objective.body">
                   <!-- TODO change what the input type is so that there is a min and max Range -->
                   <!-- <input type="text" class="form-control my-1" placeholder="Range" v-model="state.objective.range"> -->
-                  <button type="submit" class="btn btn-primary">
-                    Create Objective
-                  </button>
-                </div>
-                <div class="modal-footer">
+                  <div class="row justify-content-center">
+                    <button type="submit" class="btn create-button">
+                      Create Objective
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -156,5 +156,11 @@ export default {
 .border{
   border: 8;
   border-color: black;
+}
+.create-button{
+   border: 2px solid #0A0732;
+  background-color: rgba(184, 183, 183, 0.183);
+  color: #0A0732;
+  font-family: 'Montserrat Alternates', sans-serif
 }
 </style>
