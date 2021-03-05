@@ -7,11 +7,11 @@
     </div>
     <div class="row justify-content-center">
       <div class="col">
-        <div class="card mt-1 text-left custom">
-          <div class="card-body">
-            <p class="card-text">
+        <div class=" mt-1 text-left custom ">
+          <div class="">
+            <h4 class="">
               {{ state.objective.body }}
-            </p>
+            </h4>
           </div>
         </div>
       </div>
@@ -20,14 +20,14 @@
       <form class="form-inline" @submit.prevent="submitAnswer">
         <div class="form-group mx-sm-3 mb-2 my-4">
           <input type="text"
-                 class="form-control"
+                 class="form-control shadow"
                  id="inputPassword2"
                  v-model="state.answer.body"
-                 placeholder="submit Answer"
+                 placeholder="Submit Answer"
           >
         </div>
         <!-- Button trigger modal -->
-        <button type="submit" class="btn btn-primary mb-2 my-4" data-toggle="modal" data-target="#ObjectiveCreationModal">
+        <button type="submit" class="btn btn-outline-primary mb-2 my-4 text-white backdrop shadow" data-toggle="modal" data-target="#ObjectiveCreationModal">
           Send Answer
         </button>
       </form>
@@ -86,5 +86,8 @@ export default {
 }
 .custom{
   width: 21rem;
+}
+.backdrop{
+  background-color: rgba(20, 20, 20, 0.062);
 }
 </style>
