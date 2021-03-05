@@ -12,13 +12,11 @@ export default class NotificationService {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
       })
-      console.log(res)
       if (res.isConfirmed) {
         return true
       }
       return false
     } catch (error) {
-      console.error(error)
     }
   }
 
@@ -30,7 +28,6 @@ export default class NotificationService {
       footer: '<a href class="text-dark">Why do I have this issue?</a>'
     })
     if (res.isConfirmed) {
-      console.log(res.isConfirmed)
       return true
     }
     return false
