@@ -28,7 +28,7 @@
           <p class="m-2">
             Access Code:
           </p>
-          <div class="card bottom-c">
+          <div class="card bottom-c ac-code shadow">
             <h1>{{ state.activeQuest.accessCode }}</h1>
           </div>
         </div>
@@ -37,7 +37,7 @@
         <div class="col m-4 text-center">
           <button class="btn btn-outline-primary ca shadow" v-if="state.activeQuest.isJoinable === true && state.activeQuest.isActive === true">
             <small>
-              <router-link class="current-answers" :to="{name: 'TeamsPage', params: {questid: state.questId}}">
+              <router-link class="current-answers text-white" :to="{name: 'TeamsPage', params: {questid: state.questId}}">
                 current
                 answers
               </router-link>
@@ -124,6 +124,9 @@ export default {
   border-radius: 2%;
   padding: 15px 20px;
   font-family: 'Montserrat Alternates', sans-serif;
+}
+.ac-code{
+  background-color: rgba(249, 249, 249, 0.829);
 }
 
 </style>
